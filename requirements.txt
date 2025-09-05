@@ -1,2 +1,7 @@
 # Core project dependencies (placeholder)
+fastapi==0.110.0  # planned API framework
+uvicorn[standard]==0.29.0  # local dev server
+python-dotenv==1.0.1  # env loading
+requests==2.32.3  # HTTP fetch (ingestion prototypes)
+
 

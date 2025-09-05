@@ -38,6 +38,16 @@ extra_css: []
 
 plugins:
   - search
+  - redirects:
+      redirect_maps:
+        architecture/README.md: architecture_new/overview.md
+        architecture/azure_overview.md: architecture_new/deployment_topology.md
+        architecture/rag_flow.md: architecture_new/data_flow_rag.md
+        specs/petal_schema.md: schemas/petal_schema.md
+        specs/trip_schema.md: schemas/trip_schema.md
+        specs/user_profile_schema.md: schemas/user_profile_schema.md
+        specs/api_endpoints.md: api/endpoints_draft.md
+        rag_pipeline.md: architecture_new/data_flow_rag.md
 
 markdown_extensions:
   - admonition
@@ -103,20 +113,7 @@ nav:
     - FAQ: appendix/faq.md
     - Attribution: appendix/attribution.md
     - Internationalization Strategy: appendix/i18n.md
-  - Legacy:
-    - Project Overview (Legacy): 01_project-overview.md
-    - Requirements (Legacy): 02_requirements-spec.md
-    - Solution Design (Legacy): 04_solution-design.md
-    - Azure Feasibility: feasibility-azure.md
-    - Positioning & Messaging: positioning-and-messaging.md
-    - One-Pager: one-pager.md
-    - Caching & RAG (Legacy Page): rag_pipeline.md
-  - Legacy Schemas:
-    - Petal Schema: specs/petal_schema.md
-    - Trip Schema: specs/trip_schema.md
-    - User Profile Schema: specs/user_profile_schema.md
-    - API Endpoints: specs/api_endpoints.md
-    - Compliance (Legacy): compliance.md
+  # Legacy section removed from nav; redirects plugin handles old links.
     - Operations (Legacy):
         - Monitoring & Logging: operations/monitoring.md
         - Deployment: operations/deployment.md
