@@ -1,4 +1,6 @@
-# API Endpoints (Early Draft)
+# API Endpoints (Legacy – Deprecated)
+
+> NOTE: This legacy file will be removed after migration. Canonical version: `../api/endpoints_draft.md`.
 
 Base path likely: `/api/v1`
 

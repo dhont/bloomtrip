@@ -66,13 +66,14 @@ nav:
     - Overview: architecture_new/overview.md
     - Caching Strategy: architecture_new/caching_strategy.md
     - Security & Compliance: architecture_new/security_compliance.md
+  - RAG Data Flow: architecture_new/data_flow_rag.md
     - (Legacy Azure Overview): architecture/azure_overview.md
-    - (Legacy RAG Flow Diagram): architecture/rag_flow.md
+  - (Legacy RAG Flow Diagram): architecture/rag_flow.md
   - Schemas:
-    - Search Index Config: schemas/search_index_config.md
-    - (Legacy Petal Schema): specs/petal_schema.md
-    - (Legacy Trip Schema): specs/trip_schema.md
-    - (Legacy User Profile Schema): specs/user_profile_schema.md
+  - Search Index Config: schemas/search_index_config.md
+  - Petal Schema: schemas/petal_schema.md
+  - Trip Schema: schemas/trip_schema.md
+  - User Profile Schema: schemas/user_profile_schema.md
   - API (Unstable):
     - Overview: api/overview.md
     - Auth: api/auth.md
@@ -107,6 +108,11 @@ nav:
     - Positioning & Messaging: positioning-and-messaging.md
     - One-Pager: one-pager.md
     - Caching & RAG (Legacy Page): rag_pipeline.md
+  - Legacy Schemas:
+    - Petal Schema: specs/petal_schema.md
+    - Trip Schema: specs/trip_schema.md
+    - User Profile Schema: specs/user_profile_schema.md
+    - API Endpoints: specs/api_endpoints.md
     - Compliance (Legacy): compliance.md
     - Operations (Legacy):
         - Monitoring & Logging: operations/monitoring.md

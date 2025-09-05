@@ -1,13 +1,9 @@
-# User Profile Schema (Legacy – Deprecated)
+# User Profile Schema (Canonical)
 
-> NOTE: This legacy file will be removed after migration. Canonical version: `../schemas/user_profile_schema.md`.
-
-Personalization anchor capturing stable preferences, dynamic signals, and feedback loops to influence retrieval, ranking, and generation.
+Canonical location for User Profile specification. Supersedes `../specs/user_profile_schema.md`.
 
 ---
-
 ## 1. Core Identity
-
 | Field | Type | Description |
 |-------|------|-------------|
 | user_id | string (GUID) | Unique identifier |
@@ -16,21 +12,19 @@ Personalization anchor capturing stable preferences, dynamic signals, and feedba
 | language | string | Preferred UI language (BCP 47) |
 | location | string | Home base / default region |
 | created_at | datetime | Account creation |
-| last_active | datetime | For engagement & churn signals |
+| last_active | datetime | Engagement / churn signal |
 
 ## 2. Saved Content
-
 | Field | Type | Description |
 |-------|------|-------------|
 | saved_petals | string[] | Bookmarked petals |
 | saved_trips | string[] | Stored trip IDs |
 | favorite_tags | string[] | Preference weighting |
 | recent_searches | string[] | Last N queries (rotating) |
-| discovered_petals | string[] | Found during trips |
+| discovered_petals | string[] | Found spontaneously |
 | missed_petals | string[] | Planned but skipped |
 
 ## 3. Preferences
-
 | Field | Type | Description |
 |-------|------|-------------|
 | travel_modes | string[] | campervan, bike, car, walk |
@@ -40,47 +34,43 @@ Personalization anchor capturing stable preferences, dynamic signals, and feedba
 | notification_opt_in | boolean | Messaging enable |
 
 ## 4. Feedback & Ratings
-
 | Field | Type | Description |
 |-------|------|-------------|
 | petal_feedback | object[] | { petal_id, rating(1..5), comment } |
 | trip_feedback | object[] | { trip_id, rating(1..5), comment } |
-| suggested_petals | object[] | { name, geo?, tags?, note } user ideas |
+| suggested_petals | object[] | User idea seeds |
 
 ## 5. Personalization Signals
-
 | Signal | Source | Usage |
 |--------|--------|-------|
 | favorite_tags | explicit saves | Boost matching petals |
-| discovered_petals | trip logs | Expand exploration diversity |
-| missed_petals | trip logs | Make-up trip prompts |
-| petal_feedback.rating | feedback form | Ranking training label |
+| discovered_petals | trip logs | Exploration expansion |
+| missed_petals | trip logs | Make-up suggestions |
+| petal_feedback.rating | feedback form | Ranking label |
 | seasonality_pref | profile | Seasonal biasing |
 
 ## 6. Embeddings & Privacy
-
-- Optional `preference_embedding` built from interaction vectors
-- Store only hashed or truncated recent searches beyond N=20 if privacy requirement emerges
-- PII minimization: separate secure store if regulatory scope expands
+- Optional `preference_embedding`
+- Truncate / hash old recent searches (privacy)
+- PII minimization for future regulatory scope
 
 ## 7. Caching Keys
-
 | Purpose | Pattern | TTL |
 |---------|---------|-----|
 | Profile core | profile:{user_id}:v1 | 5m |
 | Preference vector | profile:vec:{user_id}:v1 | 30m |
 
 ## 8. RAG Use Cases
-
-- Inject top preference tags + companions into prompt context summary
-- Use missed/discovered petals to bias retrieval diversification
-- Use feedback sentiment to prune low-quality petals over time
+- Inject top preference tags + companions into context summary
+- Use missed/discovered petals for diversification
+- Use feedback sentiment to prune low-quality petals
 
 ## 9. Future Considerations
-
-- Federated learning for personalization without exporting raw events
-- Time-decay weighting of favorites
-- Multi-tenant privacy partitioning
+- Federated personalization
+- Time-decay weighting
+- Multi-tenant partitioning
 
 ---
-See also: `../schemas/petal_schema.md`, `../schemas/trip_schema.md`, `../architecture_new/data_flow_rag.md`
+See also: `petal_schema.md`, `trip_schema.md`, `../architecture_new/data_flow_rag.md`
+
+Last updated: September 2025

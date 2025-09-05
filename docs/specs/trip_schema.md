@@ -1,4 +1,6 @@
-# Trip Schema
+# Trip Schema (Legacy – Deprecated)
+
+> NOTE: This legacy file will be removed after migration. Canonical version: `../schemas/trip_schema.md`.
 
 Container for itinerary structure, collaborative edits, personalization context, and generation lineage.
 
@@ -95,4 +97,4 @@ Container for itinerary structure, collaborative edits, personalization context,
 - Activity conflict detection (overlapping durations)
 
 ---
-See also: `petal_schema.md`, `user_profile_schema.md`, `../rag_pipeline.md`
+See also: `../schemas/petal_schema.md`, `../schemas/user_profile_schema.md`, `../architecture_new/data_flow_rag.md`
