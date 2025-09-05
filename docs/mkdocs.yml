@@ -48,6 +48,11 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - codehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
   - toc:
       permalink: true
 
