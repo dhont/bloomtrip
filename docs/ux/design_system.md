@@ -17,14 +17,20 @@ Focus: consistency, accessibility, performance.
 - Code blocks
 
 ## Tokens (Draft)
-```
-color.primary = #2563eb
-color.primary.accent = #3b82f6
+
+```ini
+color.brand.primary = #2563eb
+color.brand.accent = #3b82f6
+color.text.primary = #1f2937
+color.surface.background = #ffffff
+color.surface.alt = #f8fafc
 radius.sm = 2px
 radius.md = 4px
 radius.lg = 8px
 space.scale = 2 4 8 12 16 24 32 48
+shadow.card = 0 1px 2px rgba(0,0,0,0.08)
 ```
 
 ## Next
+
 Add usage examples + Figma links.

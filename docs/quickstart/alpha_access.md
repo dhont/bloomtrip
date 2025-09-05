@@ -1,8 +1,18 @@
-# Alpha Access (Planned)
+# Alpha Access
 
-Public alpha access will open after API stabilization.
+Not open yet. Planned flow:
 
-Proposed flow:
-1. Request invite form
-2. Receive temporary API key
-3. Rate limits & acceptable use summary
+1. Submit invite request (email + intended use)
+2. Receive temporary API key (rate limited)
+3. Acceptable use & attribution guidelines acknowledgement
+4. Periodic key rotation (every 30 days)
+
+Planned initial limits:
+
+| Metric | Limit |
+|--------|-------|
+| Requests / minute | 10 |
+| Requests / day | 750 |
+| Concurrent requests | 3 |
+
+Early feedback channels: GitHub Issues, Discussions board.

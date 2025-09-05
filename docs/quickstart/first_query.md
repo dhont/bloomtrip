@@ -1,13 +1,39 @@
-# First Query (Planned)
+# First Query
 
-This guide will show an example intent submission and truncated response once the public API stabilizes.
+Example prototype call (subject to change pre-stable):
 
-Planned example:
-```json
-POST /api/intent
+Request:
+
+```http
+POST /api/v1/ideas HTTP/1.1
+Content-Type: application/json
+
 {
-  "raw_text": "Weekend art + coffee in Lisbon",
+  "query": "Weekend art + coffee in Lisbon",
   "profile_id": "demo-user",
-  "filters": {"days":2}
+  "constraints": {"days": 2}
 }
 ```
+
+Truncated sample response:
+
+```json
+{
+  "ideas": [
+    {
+      "title": "Lisbon Art & Roastery Loop",
+      "why_now": "Mild spring weather and gallery openings",
+      "petals": ["ptl_123", "ptl_456"],
+      "sources": [
+        {"name": "gallery site", "url": "https://example.com"}
+      ]
+    }
+  ],
+  "attribution": {"petal_count": 12}
+}
+```
+
+Notes:
+
+- Field names may version before public release.
+- Stable contract announced in API section when ready.

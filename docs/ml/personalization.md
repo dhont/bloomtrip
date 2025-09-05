@@ -1,16 +1,21 @@
-# Personalization & Ranking (Planned)
+# Personalization & Ranking
 
 Goal: adapt retrieval & generation per user segment without leaking private context.
 
-Levers:
-- Query rewriting
-- Reranking model features (behavioral, recency)
-- Dynamic prompt context pruning
+Mechanics (initial heuristic):
 
-Privacy Safeguards:
-- Pseudonymous user IDs
-- Differential privacy (future analysis) for aggregate signals
+1. Build tag weight map: favorites (+2), saved (+1.2), recent positive feedback (+1)
+2. Compute personalization_boost = Σ(tag_weight * presence) / normalization
+3. Novelty bonus if petal not seen in last N results
+4. Diversity injection: if cluster tightness > threshold, swap in high-distance petal
+
+Signals (collected): saves, mutes, skips, dwell (planned), adjust prompts.
+
+Cold Start: similarity to nearest neighbor cluster (geography + top tags) + generic diversity set.
+
+Privacy: pseudonymous user IDs; purge interaction events >90d (aggregate features retained).
 
 Open Questions:
-- Cold start strategy?
-- Feedback loop format (thumbs vs graded)?
+
+- Feedback granularity (multi-point rating vs binary save/mute)
+- Time decay half-life for tag weights

@@ -8,5 +8,7 @@
 | Retrieval Set Cache | Cached list of candidate petal IDs keyed by normalized intent |
 | Semantic Answer Cache | Cached generated answer tied to retrieval set hash |
 | Delta Cache | Small patches applied after user edits or enrichment changes |
+| Personalization Vector | Derived embedding or tag-weight map representing user interests |
+| Diversification | Heuristic injecting high-distance petals to avoid monotony |
 
 Related schema pages: Petal, Trip, User Profile.
