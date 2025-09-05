@@ -27,26 +27,11 @@ Side / Downstream:
 - Azure Machine Learning Endpoint (ranking model)
 - Azure Maps (distance, travel time)
 
-> A rendered diagram (Mermaid) can replace this section later:
->
-> ```mermaid
-> flowchart LR
->   A[Browser / React UI] --> B[SWA Frontend]
->   B --> C[API Management]
->   C --> D[.NET Aspire API]
->   D -->|Query| S[Azure Cognitive Search]
->   D -->|Generate| O[Azure OpenAI]
->   D -->|Rank| M[Azure ML Endpoint]
->   D -->|Profile / Feedback| Q[(Azure SQL)]
->   D -->|Distance / Time| MAPS[Azure Maps]
->   subgraph Ingestion
->     F[Azure Functions] --> BL[Blob Storage]
->     F --> S
->     F --> Q
->   end
->   O --> S
->   BL --> S
-> ```
+> High-level component diagram now provided as an SVG illustration below.
+
+![Architecture overview diagram showing browser -> Static Web Apps -> API layer (.NET Aspire) -> downstream services (AI Search, OpenAI, ML endpoint, SQL, Maps) plus ingestion functions feeding storage and search](images/architecture_overview.svg)
+
+*Figure: High-level architecture.*
 
 ---
 

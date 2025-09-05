@@ -34,13 +34,7 @@ theme:
     - toc.integrate
   custom_dir: overrides
 
-extra_css:
-  - css/mermaid-theme.css
-
-# Load Mermaid runtime (render diagrams client-side). PDF export may not execute JS; consider build-time plugin later.
-extra_javascript:
-  - https://unpkg.com/mermaid@10.9.3/dist/mermaid.min.js
-  - js/mermaid-init.js
+extra_css: []
 
 plugins:
   - search
@@ -53,11 +47,6 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - codehilite
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_div_format
   - toc:
       permalink: true
 

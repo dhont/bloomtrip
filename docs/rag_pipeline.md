@@ -9,55 +9,9 @@ See domain schemas: `specs/petal_schema.md`, `specs/trip_schema.md`, `specs/user
 ---
 ## 0. Visual Flow (RAG + Caching Overview)
 
-```mermaid
-flowchart LR
-	subgraph Client
-		Q[User Query / Action]:::step
-	end
-	subgraph API_Layer[API Layer]
-		INT[Intention Normalization]:::step
-		CK{Retrieval Set Cache Hit?}:::decision
-		RETR[Hybrid Retrieval]:::step
-		ENR{Needs Enrichment?}:::decision
-		ENR_CALL[External Provider Calls]:::step
-		CTX[Context Assembly]:::step
-		GEN[Azure OpenAI Generation]:::step
-		POST[Post-Process / Attribution + License Filtering]:::step
-		STORE[Cache Store]:::cache
-	end
-	subgraph Caches
-		C_RETR[(Redis: retrieval:intent:{hash})]:::cache
-		C_PROV[(Redis: provider:place:{src}:{id})]:::cache
-		C_SEM[(Redis: semantic:trip_seed:{hash})]:::cache
-		C_DELTA[(Redis: delta:{tripId}:{scopeHash})]:::cache
-	end
-	subgraph Data
-		DB[(SQL / Future Cosmos: Petals, Trips, Profiles)]:::store
-		RAW[(Blob: Raw Payloads & Media)]:::store
-		IDX[(AI Search Index)]:::store
-	end
-	Q --> INT --> CK
-	CK -->|hit| C_RETR --> CTX
-	CK -->|miss| RETR --> ENR
-	ENR -->|yes| ENR_CALL --> C_PROV --> RETR
-	ENR -->|no| CTX
-	RETR --> IDX
-	ENR_CALL --> RAW
-	ENR_CALL --> DB
-	CTX --> GEN --> POST --> STORE
-	STORE --> C_SEM
-	STORE --> C_RETR
-	GEN --> C_DELTA
-	RETR --> C_RETR
-	DB --> RETR
-	RAW --> IDX
-	POST --> DB
-	classDef cache fill=#fdf6e3,stroke=#d2b48c,color=#654321;
-	classDef step fill=#ffffff,stroke=#1e88e5,color=#1e88e5;
-	classDef decision fill=#fff3e0,stroke=#fb8c00,color=#e65100;
-	classDef store fill=#e3f2fd,stroke=#64b5f6,color=#0d47a1;
-	class C_RETR,C_PROV,C_SEM,C_DELTA cache;
-```
+![RAG pipeline flow showing client request through intention normalization, cache decision, retrieval/enrichment, context assembly, generation, post-processing, caching layers, and data stores](images/rag_pipeline.svg)
+
+*Figure: RAG + caching overview. Blue = processing stages, gold = decisions, tan = caches, light teal = persistent stores.*
 
 		Where each hash = stable 64-bit fnv or murmur of canonical JSON subset. Version suffix bumps when prompt/template semantics change.
 
