@@ -74,19 +74,19 @@ nav:
     - Domain Model: product/domain_model.md
   - Architecture:
     - Overview: architecture_new/overview.md
-  - System Context: architecture_new/context_diagram.md
-  - Components: architecture_new/component_breakdown.md
-  - Deployment Topology: architecture_new/deployment_topology.md
+    - System Context: architecture_new/context_diagram.md
+    - Components: architecture_new/component_breakdown.md
+    - Deployment Topology: architecture_new/deployment_topology.md
     - Caching Strategy: architecture_new/caching_strategy.md
     - Security & Compliance: architecture_new/security_compliance.md
-  - RAG Data Flow: architecture_new/data_flow_rag.md
+    - RAG Data Flow: architecture_new/data_flow_rag.md
     - (Legacy Azure Overview): architecture/azure_overview.md
-  - (Legacy RAG Flow Diagram): architecture/rag_flow.md
+    - (Legacy RAG Flow Diagram): architecture/rag_flow.md
   - Schemas:
-  - Search Index Config: schemas/search_index_config.md
-  - Petal Schema: schemas/petal_schema.md
-  - Trip Schema: schemas/trip_schema.md
-  - User Profile Schema: schemas/user_profile_schema.md
+    - Search Index Config: schemas/search_index_config.md
+    - Petal Schema: schemas/petal_schema.md
+    - Trip Schema: schemas/trip_schema.md
+    - User Profile Schema: schemas/user_profile_schema.md
   - API (Unstable):
     - Overview: api/overview.md
     - Auth: api/auth.md
@@ -113,24 +113,20 @@ nav:
     - FAQ: appendix/faq.md
     - Attribution: appendix/attribution.md
     - Internationalization Strategy: appendix/i18n.md
-  # Legacy section removed from nav; redirects plugin handles old links.
-    - Operations (Legacy):
-        - Monitoring & Logging: operations/monitoring.md
-        - Deployment: operations/deployment.md
-    - Roadmap: roadmap.md
-    - Mockups:
-        - Overview: mockups/README.md
-        - Bucharest E-Bike Weekend: mockups/weekend-bucharest-ebike.md
-        - Search Refinement: mockups/search-refinement.md
-        - Itinerary Map Page: mockups/itinerary-map-page.md
-        - Itinerary Refinement Detail: mockups/itinerary-refinement-detail.md
-        - Trip In Progress View: mockups/trip-in-progress.md
-        - Navigation Picker: mockups/navigation-picker.md
-        - Post-Trip Feedback Survey: mockups/trip-feedback-survey.md
-        - User Dashboard: mockups/user-dashboard.md
-        - On-Trip Mode Transition: mockups/on-trip-mode-transition.md
-        - Trip Builder Start: mockups/trip-builder-start.md
-    - Contributing: contributing.md
+  - Roadmap: roadmap.md
+  - Mockups:
+    - Overview: mockups/README.md
+    - Bucharest E-Bike Weekend: mockups/weekend-bucharest-ebike.md
+    - Search Refinement: mockups/search-refinement.md
+    - Itinerary Map Page: mockups/itinerary-map-page.md
+    - Itinerary Refinement Detail: mockups/itinerary-refinement-detail.md
+    - Trip In Progress View: mockups/trip-in-progress.md
+    - Navigation Picker: mockups/navigation-picker.md
+    - Post-Trip Feedback Survey: mockups/trip-feedback-survey.md
+    - User Dashboard: mockups/user-dashboard.md
+    - On-Trip Mode Transition: mockups/on-trip-mode-transition.md
+    - Trip Builder Start: mockups/trip-builder-start.md
+  - Contributing: contributing.md
 
 extra:
   social:
