@@ -21,20 +21,25 @@ It’s designed to help travellers discover, plan, and navigate trips — starti
 
 ## Architecture
 
-BloomTrip’s backend is built on Azure services:
+Core Azure components:
 
-- **Azure Cognitive Search** — Hybrid retrieval (BM25 + vector) with filters  
-- **Azure OpenAI** — Embeddings + grounded trip card generation  
-- **Azure SQL Database** — Source of truth for profiles, events, feedback (Cosmos DB optional future)  
-- **Blob Storage** — Raw payloads, transcripts, generated artifacts  
-- **Azure Functions / Logic Apps** — Data ingestion and enrichment pipelines  
-- **(Optional Future) Azure Cache for Redis** — Low‑latency cache layer once traffic justifies  
+- **Azure Cognitive Search** – Hybrid BM25 + vector retrieval
+- **Azure OpenAI** – Embeddings & grounded text generation
+- **Azure SQL Database** – Trips, profiles, normalized petals (relational MVP)
+- **Blob Storage** – Raw ingestion payloads & media
+- **Azure Functions / Logic Apps** – Ingestion & enrichment triggers
+- **(Future) Azure Cache for Redis** – External cache when volume warrants
 
-📄 See [`/docs/architecture/README.md`](docs/architecture/README.md) for the full RAG + Caching + Storage diagram and explanation.
+📄 Canonical architecture docs now live under `docs/architecture_new/`:
+
+- Overview: `docs/architecture_new/overview.md`
+- RAG Data Flow: `docs/architecture_new/data_flow_rag.md`
+- Deployment Topology: `docs/architecture_new/deployment_topology.md`
+- Caching Strategy: `docs/architecture_new/caching_strategy.md`
 
 ---
 
-## BloomTrip Repository Structure
+## Repository Structure (Simplified)
 
 ```text
 BloomTrip/
@@ -43,16 +48,17 @@ BloomTrip/
 ├── CONTRIBUTING.md
 ├── CODE_OF_CONDUCT.md
 │
-├── /docs/
-│   ├── architecture/
-│   │   ├── rag_caching_storage_map.png
-│   │   └── README.md
-│   ├── specs/
-│   │   ├── petal_schema.md
-│   │   ├── trip_schema.md
-│   │   ├── user_profile_schema.md
-│   │   └── api_endpoints.md
-│   └── roadmap.md
+├── docs/
+│   ├── architecture_new/          # Canonical architecture pages
+│   ├── schemas/ (canonical)       # Petal / Trip / User Profile specs
+│   ├── api/                       # Draft API docs (unstable)
+│   ├── ml/                        # Ranking, evaluation, prompt guidelines
+│   ├── ops/                       # Cost, backups, incidents, observability
+│   ├── ux/                        # Design system, accessibility
+│   ├── governance/                # Changelog, style guide, ADRs
+│   ├── quickstart/                # Run locally, first query, alpha access
+│   ├── overview/                  # Intro, concepts, personas
+│   └── appendix/                  # Glossary, FAQ, attribution, i18n
 │
 ├── /schemas/
 │   ├── petal.schema.json
@@ -71,28 +77,35 @@ BloomTrip/
 
 ```
 
-## Quick Start
+## Quick Start (Early)
 
-> **Note:** This is an early‑stage open‑source project. Contributions are welcome!
+```bash
+git clone https://github.com/dhont/bloomtrip.git
+cd bloomtrip
+python -m venv .venv
+. .venv/Scripts/activate  # Windows PowerShell: .venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
 
-1. **Clone the repo**
+Run docs locally (optional):
 
-   ```bash
-   git clone https://github.com/dhont/bloomtrip.git
-   cd bloomtrip
-   ```
+```bash
+pip install -r requirements-docs.txt
+mkdocs serve -f docs/mkdocs.yml
+```
 
-2. *(Coming soon)* Setup instructions for local dev will live in `docs/getting_started.md`.
+See `docs/quickstart/run_locally.md` for the fuller workflow (seed data script, env vars) as it evolves.
 
 ## Contributing
 
-We welcome contributions of all kinds — code, docs, ideas, and bug reports.
+We welcome contributions (code, docs, ideas, bug reports).
 
-Read CONTRIBUTING.md for guidelines
+1. Read `CONTRIBUTING.md` for workflow & coding standards.
+2. Open a GitHub Issue for proposals (label: enhancement, docs, question).
+3. For architecture changes, add an ADR in `docs/governance/adrs/`.
+4. Keep PRs focused; update relevant docs alongside code.
 
-Check roadmap.md for planned features
-
-Use GitHub Issues for bugs and feature requests
+Roadmap: `docs/roadmap.md` (high-level milestones).
 
 ## License
 
@@ -100,10 +113,9 @@ MIT
 
 ## Community
 
-Discussions: Use the GitHub Discussions tab for Q&A and brainstorming
+- Discussions: GitHub Discussions tab
+- Issues: Tag `good first issue` to help newcomers
+- Roadmap: `docs/roadmap.md`
 
-Issues: Tag with good first issue for newcomers
-
-Roadmap: Publicly visible in /docs/roadmap.md
-
+---
 BloomTrip — Plan smarter. Travel better.
