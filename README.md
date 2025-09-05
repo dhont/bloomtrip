@@ -68,7 +68,7 @@ BloomTrip/
 │
 └── /tests/
 
----
+```
 
 ## Quick Start
 
