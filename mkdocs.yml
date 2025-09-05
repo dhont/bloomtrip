@@ -85,7 +85,7 @@ nav:
   - User Dashboard: mockups/user-dashboard.md
   - On-Trip Mode Transition: mockups/on-trip-mode-transition.md
   - Trip Builder Start: mockups/trip-builder-start.md
-  - Contributing: ../CONTRIBUTING.md
+  - Contributing: contributing.md
 
 extra:
   social:
