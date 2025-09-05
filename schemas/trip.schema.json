@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bloomtrip.dev/schemas/trip.schema.json",
+  "title": "Trip",
+  "type": "object",
+  "required": ["id", "user_id", "title", "created_at", "updated_at"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "user_id": { "type": "string" },
+    "title": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string" },
+    "petals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["petal_id", "day", "position"],
+        "properties": {
+          "petal_id": { "type": "string", "format": "uuid" },
+          "day": { "type": "integer", "minimum": 1 },
+          "position": { "type": "integer", "minimum": 0 },
+          "notes": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "duration_days": { "type": "integer", "minimum": 1 },
+    "budget_range": {
+      "type": "object",
+      "required": ["currency", "min", "max"],
+      "properties": {
+        "currency": { "type": "string", "minLength": 3, "maxLength": 3 },
+        "min": { "type": "number", "minimum": 0 },
+        "max": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "preferences": { "type": "object", "additionalProperties": true },
+    "generated": { "type": "boolean" },
+    "score": { "type": "number" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

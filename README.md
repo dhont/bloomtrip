@@ -1,6 +1,8 @@
 # BloomTrip
 
-**BloomTrip** is an open‑source travel planning platform that blends **Retrieval‑Augmented Generation (RAG)**, multi‑source enrichment, and intelligent caching to create personalized itineraries from both open and partner data sources.
+[![Documentation Status](https://readthedocs.org/projects/bloomtrip/badge/?version=latest)](https://bloomtrip.readthedocs.io/en/latest/?badge=latest)
+
+**BloomTrip** is a travel recommendation platform (weekend / short trip focus) that blends **Retrieval‑Augmented Generation (RAG)**, multi‑source enrichment, and incremental personalization to create grounded trip ideas.
 
 It’s designed to help travellers discover, plan, and navigate trips — starting from any spark of inspiration: a seasonal promo, a saved place, or an AI‑powered recommendation.
 
@@ -21,13 +23,12 @@ It’s designed to help travellers discover, plan, and navigate trips — starti
 
 BloomTrip’s backend is built on Azure services:
 
-- **Azure AI Search** — Hybrid retrieval (BM25 + vector) with filters  
-- **Azure OpenAI** — Embeddings + grounded itinerary generation  
-- **Azure Cognitive Services** — Image tagging, translation, summarization, sentiment analysis  
-- **Azure Cache for Redis** — Low‑latency caching for retrieval sets and generated answers  
-- **Cosmos DB** — Source of truth for Petals, Trips, and User Profiles  
-- **Blob Storage** — Raw API payloads, images, generated content  
-- **Azure Functions / Logic Apps** — Data ingestion and enrichment pipelines
+- **Azure Cognitive Search** — Hybrid retrieval (BM25 + vector) with filters  
+- **Azure OpenAI** — Embeddings + grounded trip card generation  
+- **Azure SQL Database** — Source of truth for profiles, events, feedback (Cosmos DB optional future)  
+- **Blob Storage** — Raw payloads, transcripts, generated artifacts  
+- **Azure Functions / Logic Apps** — Data ingestion and enrichment pipelines  
+- **(Optional Future) Azure Cache for Redis** — Low‑latency cache layer once traffic justifies  
 
 📄 See [`/docs/architecture/README.md`](docs/architecture/README.md) for the full RAG + Caching + Storage diagram and explanation.
 
@@ -75,6 +76,34 @@ BloomTrip/
 > **Note:** This is an early‑stage open‑source project. Contributions are welcome!
 
 1. **Clone the repo**
+
    ```bash
-   git clone https://github.com/YOUR_USERNAME/BloomTrip.git
-   cd BloomTrip
+   git clone https://github.com/dhont/bloomtrip.git
+   cd bloomtrip
+   ```
+
+2. *(Coming soon)* Setup instructions for local dev will live in `docs/getting_started.md`.
+
+## Contributing
+
+We welcome contributions of all kinds — code, docs, ideas, and bug reports.
+
+Read CONTRIBUTING.md for guidelines
+
+Check roadmap.md for planned features
+
+Use GitHub Issues for bugs and feature requests
+
+## License
+
+MIT
+
+## Community
+
+Discussions: Use the GitHub Discussions tab for Q&A and brainstorming
+
+Issues: Tag with good first issue for newcomers
+
+Roadmap: Publicly visible in /docs/roadmap.md
+
+BloomTrip — Plan smarter. Travel better.

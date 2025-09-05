@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bloomtrip.dev/schemas/petal.schema.json",
+  "title": "Petal",
+  "type": "object",
+  "required": ["id", "type", "locale", "title", "created_at", "updated_at"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "type": { "type": "string" },
+    "locale": { "type": "string" },
+    "title": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string" },
+    "content": { "type": "object", "additionalProperties": true },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "embeddings": { "type": "array", "items": { "type": "number" } },
+    "source": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}
