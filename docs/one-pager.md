@@ -2,6 +2,9 @@
 
 **Tagline:** *Where your weekends come alive.*
 
+![One-Pager Overview](mockups/images/one-pager.png)
+
+
 ---
 ## Problem
 
@@ -77,6 +80,7 @@ BloomTrip is a **weekend-first** travel app that delivers **personalized trip su
 ---
  
 ## Early KPIs (MVP)
+
 | Metric | Target | Rationale |
 |--------|--------|-----------|
 | Waitlist signups | 1,000 pre-beta | Validate positioning resonance |
@@ -101,4 +105,4 @@ Alpha data ingestion & retrieval in progress. Landing live for early email captu
 Join the alpha waitlist at **BloomTripApp.com** and get early personalized weekend ideas.
 
 ---
-Last updated: 2025-09-05
+Last updated: 2025-09-05 (one-pager.png added)

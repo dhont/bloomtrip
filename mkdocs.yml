@@ -2,7 +2,7 @@ site_name: BloomTrip Documentation
 site_description: >
   Open-source travel planning platform powered by Azure AI Search, Azure OpenAI, and multi-source enrichment.
   RAG-based itinerary generation, smart caching, and TOS-compliant integration with open and partner data.
-site_url: https://bloomtrip.readthedocs.io
+site_url: https://bloomtripbeta.readthedocs.io
 repo_url: https://github.com/dhont/bloomtrip
 repo_name: bloomtrip
 edit_uri: edit/main/docs/

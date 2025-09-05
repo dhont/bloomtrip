@@ -1,6 +1,6 @@
 # BloomTrip
 
-[![Documentation Status](https://readthedocs.org/projects/bloomtrip/badge/?version=latest)](https://bloomtrip.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/bloomtripbeta/badge/?version=latest)](https://bloomtripbeta.readthedocs.io/en/latest/?badge=latest)
 
 **BloomTrip** is a travel recommendation platform (weekend / short trip focus) that blends **Retrieval‑Augmented Generation (RAG)**, multi‑source enrichment, and incremental personalization to create grounded trip ideas.
 
