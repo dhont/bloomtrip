@@ -27,26 +27,11 @@ Side / Downstream:
 - Azure Machine Learning Endpoint (ranking model)
 - Azure Maps (distance, travel time)
 
-> A rendered diagram (Mermaid) can replace this section later:
->
-> ```mermaid
-> flowchart LR
->   A[Browser / React UI] --> B[SWA Frontend]
->   B --> C[API Management]
->   C --> D[.NET Aspire API]
->   D -->|Query| S[Azure Cognitive Search]
->   D -->|Generate| O[Azure OpenAI]
->   D -->|Rank| M[Azure ML Endpoint]
->   D -->|Profile / Feedback| Q[(Azure SQL)]
->   D -->|Distance / Time| MAPS[Azure Maps]
->   subgraph Ingestion
->     F[Azure Functions] --> BL[Blob Storage]
->     F --> S
->     F --> Q
->   end
->   O --> S
->   BL --> S
-> ```
+> High-level component diagram now provided as an SVG illustration below.
+
+![Architecture overview diagram showing browser -> Static Web Apps -> API layer (.NET Aspire) -> downstream services (AI Search, OpenAI, ML endpoint, SQL, Maps) plus ingestion functions feeding storage and search](images/architecture_overview.svg)
+
+*Figure: High-level architecture.*
 
 ---
 
@@ -190,16 +175,16 @@ Infra as Code: Bicep or Terraform modules (network, data, app, ml).
 
 ---
 
-## 7. Next Steps
+## 7. Execution Plan (Phase 0 → MVP)
 
-1. Provision resource group + baseline services.
-2. Implement first three ingestion jobs (Weather, Events, Holidays).
-3. Define Cognitive Search index & embedding field strategy.
-4. Implement profile-based retrieval endpoint.
-5. Integrate RAG generation + justification prompt template.
-6. Deploy MVP to dev Azure environment.
- 7. Prototype Redis local cache emulation & key patterns.
- 8. Add initial freshness telemetry (age buckets per petal).
+1. Provision resource group + baseline services
+2. Implement first three ingestion jobs (Weather, Events, Holidays)
+3. Define Cognitive Search index & embedding field strategy
+4. Implement profile-based retrieval endpoint
+5. Integrate RAG generation + justification prompt template
+6. Deploy MVP to dev Azure environment
+7. Prototype Redis local cache emulation & key patterns
+8. Add initial freshness telemetry (age buckets per petal)
 
 ---
 

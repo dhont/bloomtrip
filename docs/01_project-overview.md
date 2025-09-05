@@ -93,7 +93,7 @@ Key differentiators:
 - Incremental scale path (Basic SKUs → autoscale)
 - Built-in geospatial (Azure Maps API)
 
-## 9. Next Steps
+## 9. Near-Term Roadmap
 
 - Finalize requirements spec (`docs/02_requirements-spec.md`)
 - Build ingestion scripts for first data sources

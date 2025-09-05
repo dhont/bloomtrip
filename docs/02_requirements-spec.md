@@ -103,13 +103,13 @@ Derived from market analysis (`05_market-analysis.md`):
 
 ---
 
-## 7. Next Steps
+## 7. Delivery Sequence (Initial)
 
-1. Finalize architecture (`03_architecture.md`).
-2. Implement ingestion (weather, holidays, 1 events source).
-3. Build Cognitive Search index + embedding pipeline.
-4. Ship /profile + /ideas + basic RAG generation.
-5. Add feedback actions + heuristic ranking → integrate ML ranker v1.
+1. Finalize architecture (`03_architecture.md`)
+2. Implement ingestion (weather, holidays, first events source)
+3. Build Cognitive Search index + embedding pipeline
+4. Ship /profile + /ideas + basic RAG generation
+5. Add feedback actions + heuristic ranking; integrate ML ranker v1
 
 ---
 

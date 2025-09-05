@@ -1,18 +1,13 @@
 # User Dashboard (Personal Travel Hub)
 
-> Image asset naming guidance (add these PNGs to `mockups/images/` and I'll wire them automatically):
-> - Desktop: `user-dashboard-desktop.png`
-> - Mobile: `user-dashboard-mobile.png`
-> (Optional combined hero you already have: `dashboard.png` – retained below.)
-
 ![Desktop user dashboard showing greeting, quick action tiles, upcoming trips carousel, saved petals grid, seasonal suggestions, feedback metrics](images/user-dashboard-desktop.png)
 *Figure 10a. Desktop User Dashboard: full-width layout with horizontal trip carousel, multi-column saved petals grid, seasonal rails, and feedback impact panel.*
 
 ![Mobile user dashboard with stacked greeting, quick actions row, single upcoming trip card, swipeable saved petals, seasonal carousel, feedback summary](images/user-dashboard-mobile.png)
 *Figure 10b. Mobile User Dashboard: condensed thumb-first stack prioritizing next actions (navigate, add petal, continue planning) and swipeable rails.*
 
-![Fallback composite user dashboard mock (combined)](images/dashboard.png)
-*Figure 10. Composite (legacy) dashboard mock placeholder kept until dedicated desktop/mobile variants are added.*
+![Legacy composite user dashboard mock (combined)](images/dashboard.png)
+*Figure 10. Legacy composite dashboard mock retained for historical reference (desktop/mobile supersede).* 
 
 ## 1. Purpose
 
@@ -170,7 +165,7 @@ Performance Considerations:
 | Accessibility audit pass | Planned |
 
 ---
-Figure 10 / 10a / 10b added: 2025-09-05 (placeholders `dashboard.png`, `user-dashboard-desktop.png`, `user-dashboard-mobile.png`).
+Figure 10 / 10a / 10b added: 2025-09-05 (assets: `dashboard.png`, `user-dashboard-desktop.png`, `user-dashboard-mobile.png`).
 
 Cross-links: `trip-in-progress.md`, `petal_schema.md`, `trip_schema.md`, `user_profile_schema.md`, `rag_pipeline.md`.
 Additional Link: See `on-trip-mode-transition.md` for the in-motion experience after commit / start.

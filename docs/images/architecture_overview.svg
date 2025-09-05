@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="420" viewBox="0 0 1100 420" role="img" aria-label="High-level architecture overview">
+ <style>
+  .box{fill:#ffffff;stroke:#1e88e5;stroke-width:1.4;font:12px 'Segoe UI',Arial}
+  .svc{fill:#e3f2fd;stroke:#64b5f6;stroke-width:1.2}
+  .ingest{fill:#fdf6e3;stroke:#d2b48c;stroke-width:1.2}
+  .title{font:16px 'Segoe UI Semibold',Arial}
+  text{fill:#222;font:11px 'Segoe UI',Arial}
+  marker#arr{markerWidth:8;markerHeight:8;refX:7;refY:3;orient=auto;markerUnits:strokeWidth}
+  path.f{stroke:#555;stroke-width:1.3;fill:none;marker-end:url(#arr)}
+ </style>
+ <defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+   <path d="M0 0 L10 5 L0 10 z" fill="#555"/>
+  </marker>
+ </defs>
+ <text x="15" y="30" class="title">Architecture Overview</text>
+ <rect x="40" y="90" width="130" height="50" rx="6" class="box"/>
+ <text x="105" y="120" text-anchor="middle">Browser / UI</text>
+ <rect x="210" y="90" width="150" height="50" rx="6" class="box"/>
+ <text x="285" y="120" text-anchor="middle">Static Web Apps</text>
+ <rect x="400" y="90" width="150" height="50" rx="6" class="box"/>
+ <text x="475" y="120" text-anchor="middle">API (.NET Aspire)</text>
+ <!-- Core services -->
+ <rect x="600" y="40" width="130" height="50" rx="6" class="svc"/>
+ <text x="665" y="70" text-anchor="middle">AI Search</text>
+ <rect x="600" y="110" width="130" height="50" rx="6" class="svc"/>
+ <text x="665" y="140" text-anchor="middle">Azure OpenAI</text>
+ <rect x="600" y="180" width="130" height="50" rx="6" class="svc"/>
+ <text x="665" y="210" text-anchor="middle">ML Endpoint</text>
+ <rect x="760" y="70" width="130" height="50" rx="6" class="svc"/>
+ <text x="825" y="100" text-anchor="middle">SQL / Profiles</text>
+ <rect x="760" y="140" width="130" height="50" rx="6" class="svc"/>
+ <text x="825" y="170" text-anchor="middle">Blob Storage</text>
+ <rect x="760" y="210" width="130" height="50" rx="6" class="svc"/>
+ <text x="825" y="240" text-anchor="middle">Azure Maps</text>
+ <!-- Ingestion cluster -->
+ <rect x="930" y="70" width="140" height="190" rx="8" class="ingest"/>
+ <text x="1000" y="95" text-anchor="middle">Ingestion</text>
+ <text x="1000" y="120" text-anchor="middle">Functions</text>
+ <text x="1000" y="140" text-anchor="middle">Logic Apps</text>
+ <text x="1000" y="160" text-anchor="middle">Data Factory</text>
+ <text x="1000" y="180" text-anchor="middle">Event Grid</text>
+ <!-- Flows -->
+ <path class="f" d="M170 115 L210 115"/>
+ <path class="f" d="M360 115 L400 115"/>
+ <path class="f" d="M550 115 L600 65"/>
+ <path class="f" d="M550 115 L600 140"/>
+ <path class="f" d="M550 115 L600 205"/>
+ <path class="f" d="M730 95 L760 95"/>
+ <path class="f" d="M730 165 L760 165"/>
+ <path class="f" d="M730 235 L760 235"/>
+ <path class="f" d="M890 95 L930 95"/>
+ <path class="f" d="M890 165 L930 165"/>
+ <path class="f" d="M890 235 L930 235"/>
+ <path class="f" d="M670 90 L670 110"/>
+ <path class="f" d="M670 160 L670 180"/>
+ </svg>

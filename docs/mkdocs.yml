@@ -1,0 +1,136 @@
+site_name: BloomTrip Documentation
+site_description: >
+  Open-source travel planning platform powered by Azure AI Search, Azure OpenAI, and multi-source enrichment.
+  RAG-based itinerary generation, smart caching, and TOS-compliant integration with open and partner data.
+site_url: https://bloomtripbeta.readthedocs.io
+site_dir: ../site
+repo_url: https://github.com/dhont/bloomtrip
+repo_name: bloomtrip
+edit_uri: edit/main/docs/
+
+# Because this config now lives inside the docs/ directory, set docs_dir explicitly.
+docs_dir: .
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      accent: indigo
+    - scheme: slate
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+    - toc.integrate
+  custom_dir: overrides
+
+extra_css: []
+
+plugins:
+  - search
+  - redirects:
+      redirect_maps:
+        architecture/README.md: architecture_new/overview.md
+        architecture/azure_overview.md: architecture_new/deployment_topology.md
+        architecture/rag_flow.md: architecture_new/data_flow_rag.md
+        specs/petal_schema.md: schemas/petal_schema.md
+        specs/trip_schema.md: schemas/trip_schema.md
+        specs/user_profile_schema.md: schemas/user_profile_schema.md
+        specs/api_endpoints.md: api/endpoints_draft.md
+        rag_pipeline.md: architecture_new/data_flow_rag.md
+
+markdown_extensions:
+  - admonition
+  - def_list
+  - tables
+  - footnotes
+  - attr_list
+  - md_in_html
+  - codehilite
+  - toc:
+      permalink: true
+
+nav:
+  - Overview:
+    - Introduction: overview/introduction.md
+    - Key Concepts: overview/key_concepts.md
+    - Use Cases & Personas: overview/use_cases_personas.md
+  - Quick Start:
+    - Run Locally: quickstart/run_locally.md
+    - First Query: quickstart/first_query.md
+    - Alpha Access: quickstart/alpha_access.md
+  - Product:
+    - User Stories: product/user_stories.md
+    - Domain Model: product/domain_model.md
+  - Architecture:
+    - Overview: architecture_new/overview.md
+    - System Context: architecture_new/context_diagram.md
+    - Components: architecture_new/component_breakdown.md
+    - Deployment Topology: architecture_new/deployment_topology.md
+    - Caching Strategy: architecture_new/caching_strategy.md
+    - Security & Compliance: architecture_new/security_compliance.md
+    - RAG Data Flow: architecture_new/data_flow_rag.md
+    - (Legacy Azure Overview): architecture/azure_overview.md
+    - (Legacy RAG Flow Diagram): architecture/rag_flow.md
+  - Schemas:
+    - Search Index Config: schemas/search_index_config.md
+    - Petal Schema: schemas/petal_schema.md
+    - Trip Schema: schemas/trip_schema.md
+    - User Profile Schema: schemas/user_profile_schema.md
+  - API (Unstable):
+    - Overview: api/overview.md
+    - Auth: api/auth.md
+    - Errors: api/errors.md
+  - ML & AI:
+    - Ranking Model: ml/ranking_model.md
+    - Prompt Guidelines: ml/prompt_guidelines.md
+    - Evaluation: ml/evaluation.md
+    - Personalization & Ranking: ml/personalization.md
+  - Ops:
+    - Cost Management: ops/cost_management.md
+    - Backup & Recovery: ops/backup_recovery.md
+    - Incident Response: ops/incident_response.md
+    - Observability: ops/observability.md
+  - UX:
+    - Design System: ux/design_system.md
+    - Accessibility: ux/accessibility.md
+  - Governance:
+    - Changelog: governance/changelog.md
+    - Docs Style Guide: governance/docs_style_guide.md
+    - ADRs: governance/adrs/README.md
+  - Appendix:
+    - Glossary: appendix/glossary.md
+    - FAQ: appendix/faq.md
+    - Attribution: appendix/attribution.md
+    - Internationalization Strategy: appendix/i18n.md
+  - Roadmap: roadmap.md
+  - Mockups:
+    - Overview: mockups/README.md
+    - Bucharest E-Bike Weekend: mockups/weekend-bucharest-ebike.md
+    - Search Refinement: mockups/search-refinement.md
+    - Itinerary Map Page: mockups/itinerary-map-page.md
+    - Itinerary Refinement Detail: mockups/itinerary-refinement-detail.md
+    - Trip In Progress View: mockups/trip-in-progress.md
+    - Navigation Picker: mockups/navigation-picker.md
+    - Post-Trip Feedback Survey: mockups/trip-feedback-survey.md
+    - User Dashboard: mockups/user-dashboard.md
+    - On-Trip Mode Transition: mockups/on-trip-mode-transition.md
+    - Trip Builder Start: mockups/trip-builder-start.md
+  - Contributing: contributing.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/dhont/bloomtrip
+      name: GitHub
+copyright: "© 2025 BloomTrip"

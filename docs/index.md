@@ -13,7 +13,7 @@ Welcome to the BloomTrip developer & product documentation.
 - **Architecture**: System flow, RAG pipeline, caching, Azure components.
 - **Specs**: Core domain schemas and API endpoints.
 - **Roadmap**: Phased delivery plan.
-- **Mockups**: Early UX visualization (placeholders).
+- **Mockups**: Early UX visualization (work in progress).
 
 ## Quick Start
 

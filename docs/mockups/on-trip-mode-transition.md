@@ -3,8 +3,6 @@
 ![Mobile on-trip mode screen showing live map, up-next petal card, nearby suggestions carousel, quick action bar, and newly discovered banner](images/on-trip-mode-mobile.png)
 *Figure 11. On‑Trip Mode (mobile): live map + "Up Next" focus card, Nearby Petals rail, quick navigation/actions, and dynamic discovery banner.*
 
-> Image upload guidance: save the mobile mock as `on-trip-mode-mobile.png` in `docs/mockups/images/`. (Optional desktop variant: `on-trip-mode-desktop.png`.)
-
 ## 1. Purpose
 
 Provide a seamless shift from planning / inspiration (dashboard, saved petal, seasonal suggestion) into an in-motion experience that preserves itinerary context while surfacing opportunistic nearby petals.
@@ -104,6 +102,6 @@ Algorithm (simplified):
 - Passive learning of detour tolerance to tune proximity scoring.
 
 ---
-Figure 11 added: 2025-09-05 (image placeholder `on-trip-mode-mobile.png`).
+Figure 11 added: 2025-09-05 (asset `on-trip-mode-mobile.png`).
 
 Cross-links: `trip-in-progress.md`, `navigation-picker.md`, `user-dashboard.md`, `petal_schema.md`.

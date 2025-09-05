@@ -6,38 +6,8 @@ Yes — the BloomTrip product vision is fully achievable on Azure using managed 
 ![High-level Azure feasibility architecture diagram showing data ingestion, enrichment, search, generation, caching, and delivery layers](mockups/images/feasibility-azure.png)
 *Figure 9. Azure feasibility architecture overview: ingestion (Functions/Logic Apps) → normalization & enrichment (OpenAI/Cognitive Services) → indexing & retrieval (AI Search hybrid + semantic) → generation (Azure OpenAI) → caching (Redis tiers) → delivery (SPA + APIs + Maps) with governance (Key Vault, Monitor, Entra ID).*
 
-??? note "Mermaid Text Fallback (Figure 9)"
-	```mermaid
-	flowchart LR
-		subgraph Sources
-			A1[Tripadvisor API]:::ext
-			A2[Google Places]:::ext
-			A3[Open Data (OSM/Wiki)]:::ext
-			A4[User Feedback / UGC]
-		end
-		subgraph Ingestion
-			F1[Functions Schedules]
-			F2[Logic Apps Workflows]
-		end
-		subgraph Enrichment
-			E1[Normalization Logic]
-			E2[OpenAI Classification]
-			E3[Cognitive Services (Vision/OCR)]
-		end
-		subgraph Storage
-			S1[(Blob Raw)]
-			S2[(Cosmos / PG Normalized)]
-			S3[(Redis Caches)]
-		end
-		subgraph Retrieval
-			R1[AI Search Index\nBM25 + Vector + Filters]
-		end
-		subgraph Generation
-			G1[Azure OpenAI GPT]
-		end
-		subgraph Delivery
-			D1[API (Functions/Container Apps)]
-			D2[Web SPA]
+??? note "Textual fallback removed"
+	Mermaid fallback diagram removed in favor of the primary static image above.
 			D3[Navigation Deep Links]
 		end
 		subgraph Governance
@@ -144,15 +114,16 @@ Rendering & planning can use Azure Maps (or dual provider abstraction). Deep lin
 Waypoint Compression: prioritize origin, final destination, must-keep petals, overnights, longest duration, high scenic rating.
 
 ---
-## 7. Quick Next Steps (Practical Path)
+ 
+## 7. Practical Implementation Path
 
-1. Finalize Petal schema & implement normalization pipeline.
-2. Stand up Azure AI Search index (vector + semantic) with pilot dataset.
-3. Add OpenAI embedding + generation flow for initial itinerary creation.
-4. Implement Redis caching scaffolding (provider, retrieval, semantic tiers).
-5. Build Map provider abstraction & deep link navigation picker.
-6. Instrument telemetry (token usage, retrieval latency, cache hit rate).
-7. Add feedback ingest (Survey) → update Popular Petals ranking nightly.
+1. Finalize Petal schema & implement normalization pipeline
+2. Stand up Azure AI Search index (vector + semantic) with pilot dataset
+3. Add OpenAI embedding + generation flow for initial itinerary creation
+4. Implement Redis caching scaffolding (provider, retrieval, semantic tiers)
+5. Build Map provider abstraction & deep link navigation picker
+6. Instrument telemetry (token usage, retrieval latency, cache hit rate)
+7. Add feedback ingest (survey) → update Popular Petals ranking nightly
 
 ---
 ## 8. Azure Cognitive Services Value Add

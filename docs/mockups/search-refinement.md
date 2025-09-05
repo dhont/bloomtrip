@@ -43,7 +43,7 @@ To refine your search, consider adding more details about:
 
 ---
 
-### Next Steps After Choosing a Trip
+### After Choosing a Trip
 
 #### Trip Details Page
 - **Hero Image**: Showcase the destination/activity.

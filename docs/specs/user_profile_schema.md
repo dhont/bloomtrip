@@ -1,4 +1,6 @@
-# User Profile Schema
+# User Profile Schema (Legacy – Deprecated)
+
+> NOTE: This legacy file will be removed after migration. Canonical version: `../schemas/user_profile_schema.md`.
 
 Personalization anchor capturing stable preferences, dynamic signals, and feedback loops to influence retrieval, ranking, and generation.
 
@@ -81,4 +83,4 @@ Personalization anchor capturing stable preferences, dynamic signals, and feedba
 - Multi-tenant privacy partitioning
 
 ---
-See also: `petal_schema.md`, `trip_schema.md`, `../rag_pipeline.md`
+See also: `../schemas/petal_schema.md`, `../schemas/trip_schema.md`, `../architecture_new/data_flow_rag.md`

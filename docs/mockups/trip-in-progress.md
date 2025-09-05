@@ -57,7 +57,7 @@ Client sends a `clientDraftId` to avoid duplicate saves if network retries.
 | Missing meal anchor | "Add a scenic lunch stop" | Day window (midday slot) |
 | Overloaded afternoon | "Shorten final ride before sunset" | Affected segments only |
 | Weak diversity | "Insert a cultural break" | Gap between long homogeneous activities |
-| High idle gap | "Fill early evening with light activity" | Gap placeholder |
+| High idle gap | "Fill early evening with light activity" | Gap prompt |
 
 ## 7. Telemetry (Incremental to Refinement View)
 

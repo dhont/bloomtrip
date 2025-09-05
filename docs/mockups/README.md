@@ -1,6 +1,6 @@
 # Mockups
 
-These image placeholders represent upcoming UI surfaces. Replace each PNG with exported design artifacts (Figma or Excalidraw) keeping the same filenames.
+Early UX visuals illustrating key user flows. Assets will evolve; filenames remain stable for docs links.
 
 | Screen | Purpose | Notes |
 |--------|---------|-------|
@@ -10,15 +10,15 @@ These image placeholders represent upcoming UI surfaces. Replace each PNG with e
 
 Design Principles:
 
-1. Fast clarity: show actionable next steps.
-2. Grounded transparency: attribution + source icons.
-3. Progressive disclosure: advanced filters tucked away.
-4. Trust & compliance: clear licensing/usage indicators.
+1. Fast clarity.
+2. Grounded transparency (attribution + source icons).
+3. Progressive disclosure (advanced filters tucked away).
+4. Trust & compliance (clear licensing/usage indicators).
 
-Next Steps:
+Roadmap (Design):
 
-- Add low‑fidelity wireframes.
-- Iterate with usability feedback.
-- Add dark mode variants.
+- Add low‑fidelity wireframes
+- Incorporate usability feedback sessions
+- Add dark mode variants
 
-Last updated: September 2025
+Last updated: September 2025 (content polished; removed placeholder language)
