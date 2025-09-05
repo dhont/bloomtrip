@@ -2,7 +2,7 @@
 
 **Tagline:** Where your weekends come alive.
 
-![Homepage Mockup](homepage.png)
+> (Image placeholder removed until asset is added.)
 
 ---
 

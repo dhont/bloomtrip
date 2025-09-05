@@ -4,7 +4,6 @@ These image placeholders represent upcoming UI surfaces. Replace each PNG with e
 
 | Screen | Purpose | Notes |
 |--------|---------|-------|
-| `homepage.png` | Marketing landing & conversion | Hero, feature highlights, signup capture, CTA footer. |
 | `dashboard.png` | User landing / recent trips / recommendations | Personalization tiles fed by cached retrieval sets. |
 | `trip_builder.png` | Interactive itinerary assembly | Inline RAG suggestions per day slot. |
 | `on_trip_mode.png` | Mobile live trip view | Offline caching, day progress, context-aware suggestions. |
