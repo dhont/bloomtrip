@@ -144,15 +144,16 @@ Rendering & planning can use Azure Maps (or dual provider abstraction). Deep lin
 Waypoint Compression: prioritize origin, final destination, must-keep petals, overnights, longest duration, high scenic rating.
 
 ---
-## 7. Quick Next Steps (Practical Path)
+ 
+## 7. Practical Implementation Path
 
-1. Finalize Petal schema & implement normalization pipeline.
-2. Stand up Azure AI Search index (vector + semantic) with pilot dataset.
-3. Add OpenAI embedding + generation flow for initial itinerary creation.
-4. Implement Redis caching scaffolding (provider, retrieval, semantic tiers).
-5. Build Map provider abstraction & deep link navigation picker.
-6. Instrument telemetry (token usage, retrieval latency, cache hit rate).
-7. Add feedback ingest (Survey) → update Popular Petals ranking nightly.
+1. Finalize Petal schema & implement normalization pipeline
+2. Stand up Azure AI Search index (vector + semantic) with pilot dataset
+3. Add OpenAI embedding + generation flow for initial itinerary creation
+4. Implement Redis caching scaffolding (provider, retrieval, semantic tiers)
+5. Build Map provider abstraction & deep link navigation picker
+6. Instrument telemetry (token usage, retrieval latency, cache hit rate)
+7. Add feedback ingest (survey) → update Popular Petals ranking nightly
 
 ---
 ## 8. Azure Cognitive Services Value Add

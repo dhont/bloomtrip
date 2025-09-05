@@ -1,0 +1,1710 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Open-source travel planning platform powered by Azure AI Search, Azure OpenAI, and multi-source enrichment. RAG-based itinerary generation, smart caching, and TOS-compliant integration with open and partner data.
+">
+      
+      
+      
+        <link rel="canonical" href="https://bloomtripbeta.readthedocs.io/mockups/itinerary-map-page/">
+      
+      
+        <link rel="prev" href="../search-refinement/">
+      
+      
+        <link rel="next" href="../itinerary-refinement-detail/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+    
+    
+      
+        <title>Itinerary Map Page - BloomTrip Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/mermaid-theme.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#itinerary-page-mockup-forest-lakes-mountain-loops" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="BloomTrip Documentation" class="md-header__button md-logo" aria-label="BloomTrip Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BloomTrip Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Itinerary Map Page
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dhont/bloomtrip" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bloomtrip
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BloomTrip Documentation" class="md-nav__button md-logo" aria-label="BloomTrip Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    BloomTrip Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dhont/bloomtrip" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bloomtrip
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_project-overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_requirements-spec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Requirements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_solution-design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solution Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feasibility-azure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure Feasibility
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_market-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Market Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../positioning-and-messaging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Positioning & Messaging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../one-pager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    One-Pager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/azure_overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/rag_flow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAG Flow Diagram
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Specs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Specs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specs/petal_schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Petal Schema
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specs/trip_schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trip Schema
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specs/user_profile_schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Profile Schema
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specs/api_endpoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Endpoints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rag_pipeline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Caching & RAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Operations
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            Operations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring & Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Roadmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Mockups
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            Mockups
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../weekend-bucharest-ebike/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bucharest E-Bike Weekend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../search-refinement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Search Refinement Mockup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Itinerary Map Page
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Itinerary Map Page
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose-position-in-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Purpose &amp; Position in Flow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-page-structure-high-level-wire-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Page Structure (High-Level Wire Blocks)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-map-integration-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Map Integration Options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-custom-icon-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Custom Icon System
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-sample-itinerary-map-payload-provider-agnostic" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Sample Itinerary Map Payload (Provider-Agnostic)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-embedding-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Embedding Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Embedding Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-maps-simplified" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google Maps (simplified)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bing-maps-simplified" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bing Maps (simplified)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-interaction-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Interaction Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-accessibility-internationalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Accessibility &amp; Internationalization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-performance-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Performance Considerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-telemetry-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Telemetry Events
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-data-model-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Data Model Alignment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-future-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Future Enhancements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-cross-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Cross-Links
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../itinerary-refinement-detail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Itinerary Refinement Detail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trip-in-progress/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trip In Progress View
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../navigation-picker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Navigation Picker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trip-feedback-survey/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Post-Trip Feedback Survey
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-dashboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../on-trip-mode-transition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    On-Trip Mode Transition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trip-builder-start/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trip Builder Start
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="itinerary-page-mockup-forest-lakes-mountain-loops">Itinerary Page Mockup: Forest, Lakes &amp; Mountain Loops<a class="headerlink" href="#itinerary-page-mockup-forest-lakes-mountain-loops" title="Permanent link">&para;</a></h1>
+<p><img alt="Itinerary detail with embedded map and custom icons" src="../images/itinerary-map-page.png" />
+<em>Figure 3. Core itinerary detail layout with dual column: editable day segments (left) and interactive map with custom BloomTrip markers (right).</em></p>
+<blockquote>
+<p>BloomTrip-style detailed itinerary view with embedded map (Google or Bing) highlighting Băneasa Forest trails, Snagov Lake, Moara Vlăsiei, and mountain loops near Sinaia using a custom rounded, nature‑inspired icon set.</p>
+</blockquote>
+<hr />
+<h2 id="1-purpose-position-in-flow">1. Purpose &amp; Position in Flow<a class="headerlink" href="#1-purpose-position-in-flow" title="Permanent link">&para;</a></h2>
+<p>This page appears after a user taps <strong>“Choose this trip”</strong> from a divergent / broad results screen (see <code>search-refinement.md</code>). It transitions the user from <em>idea exploration</em> to <em>trip planning ownership</em>.</p>
+<p>Key goals:</p>
+<ul>
+<li>Provide immediate visual context (hero + interactive map).</li>
+<li>Explain “Why it matches” (transparency + trust).</li>
+<li>Offer structured, editable Day-by-Day plan.</li>
+<li>Enable lightweight personalization before commitment (swap, adjust duration, companions, budget lens).</li>
+<li>Instrument feedback loops (Save, Boost Similar, Mute, Explain Choice).</li>
+</ul>
+<hr />
+<h2 id="2-page-structure-high-level-wire-blocks">2. Page Structure (High-Level Wire Blocks)<a class="headerlink" href="#2-page-structure-high-level-wire-blocks" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Header Card</strong>: Title, date window selector, profile tags, weather snippet.</li>
+<li><strong>Match Rationale Panel</strong>: Signals that fired (interests, weather window, distance radius).</li>
+<li><strong>Dual Layout Region</strong> (responsive):</li>
+<li>Left: Day / Segment cards (scrollable column).</li>
+<li>Right: Embedded Map (sticky on desktop, collapsible on mobile).</li>
+<li><strong>Personalization Tray</strong>: Inline controls (Swap, Add Day, Adjust Pace, Budget Filter toggle).</li>
+<li><strong>Logistics Strip</strong>: Drive segments, charging points, facilities.</li>
+<li><strong>Save / Share / Export Bar</strong>.</li>
+<li><strong>Feedback Footer</strong>: Micro-actions + “Not quite right? Adjust your trip”.</li>
+</ol>
+<hr />
+<h2 id="3-map-integration-options">3. Map Integration Options<a class="headerlink" href="#3-map-integration-options" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Google Maps JS API</th>
+<th>Bing Maps Web Control</th>
+<th>Neutral (Leaflet / Vector Tiles)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Route Rendering</td>
+<td>Directions + polylines styling</td>
+<td>Directions + custom layer</td>
+<td>Use precomputed polyline / GeoJSON</td>
+</tr>
+<tr>
+<td>Custom Icons</td>
+<td><code>new google.maps.Marker({icon: svg})</code></td>
+<td><code>Microsoft.Maps.Pushpin</code> w/ SVG</td>
+<td>Full SVG markers via layer</td>
+</tr>
+<tr>
+<td>Offline / Caching Strategy</td>
+<td>Limited (Terms)</td>
+<td>Limited</td>
+<td>Tile + route caching possible</td>
+</tr>
+<tr>
+<td>Licensing</td>
+<td>API key / usage based</td>
+<td>Key w/ usage tiers</td>
+<td>Depends on tile source</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Decision (MVP)</strong>: Support Google + Bing provider abstraction via a <code>MapProvider</code> interface so itinerary JSON is provider-agnostic.</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">MapProvider</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">init</span><span class="p">(</span><span class="nx">container</span><span class="o">:</span><span class="w"> </span><span class="kt">HTMLElement</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="kt">number</span><span class="p">];</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">})</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">addMarker</span><span class="p">(</span><span class="nx">poi</span><span class="o">:</span><span class="w"> </span><span class="kt">PoiMarker</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">addRoute</span><span class="p">(</span><span class="nx">route</span><span class="o">:</span><span class="w"> </span><span class="kt">EncodedRoute</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="p">.</span><span class="nx">FeatureCollection</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">highlight</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">fitTo</span><span class="p">(</span><span class="nx">ids</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<hr />
+<h2 id="4-custom-icon-system">4. Custom Icon System<a class="headerlink" href="#4-custom-icon-system" title="Permanent link">&para;</a></h2>
+<p>Design principles: rounded corners, subtle shadow (elevation 1), saturated organic palette, white inner pictogram.</p>
+<table>
+<thead>
+<tr>
+<th>Semantic</th>
+<th>Color (Hex)</th>
+<th>Icon Concept</th>
+<th>Example ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Forest Trail</td>
+<td><code>#2E8F48</code></td>
+<td>Leaf / path swirl</td>
+<td><code>poi_forest</code></td>
+</tr>
+<tr>
+<td>Lake / Water</td>
+<td><code>#0D84D9</code></td>
+<td>Gentle wave triple</td>
+<td><code>poi_lake</code></td>
+</tr>
+<tr>
+<td>Cultural Stop</td>
+<td><code>#FF8A34</code></td>
+<td>Stylized arch / column</td>
+<td><code>poi_culture</code></td>
+</tr>
+<tr>
+<td>Camp / Camper</td>
+<td><code>#1B74D2</code> (outline) + green dot</td>
+<td>Camper silhouette</td>
+<td><code>poi_camper</code></td>
+</tr>
+<tr>
+<td>Scenic View</td>
+<td><code>#6F4DF5</code></td>
+<td>Mountain + sun</td>
+<td><code>poi_view</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>SVG Marker Template (12px corner radius)</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;svg</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;48&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;56&quot;</span><span class="w"> </span><span class="na">viewBox=</span><span class="s">&quot;0 0 48 56&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;none&quot;</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;defs&gt;</span>
+<span class="w">    </span><span class="nt">&lt;filter</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;drop1&quot;</span><span class="w"> </span><span class="na">x=</span><span class="s">&quot;-4&quot;</span><span class="w"> </span><span class="na">y=</span><span class="s">&quot;-4&quot;</span><span class="w"> </span><span class="na">width=</span><span class="s">&quot;56&quot;</span><span class="w"> </span><span class="na">height=</span><span class="s">&quot;64&quot;</span><span class="w"> </span><span class="na">filterUnits=</span><span class="s">&quot;userSpaceOnUse&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;feOffset</span><span class="w"> </span><span class="na">dy=</span><span class="s">&quot;2&quot;</span><span class="nt">/&gt;&lt;feGaussianBlur</span><span class="w"> </span><span class="na">stdDeviation=</span><span class="s">&quot;2&quot;</span><span class="nt">/&gt;&lt;feColorMatrix</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;matrix&quot;</span><span class="w"> </span><span class="na">values=</span><span class="s">&quot;0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.15 0&quot;</span><span class="nt">/&gt;&lt;feBlend</span><span class="w"> </span><span class="na">mode=</span><span class="s">&quot;normal&quot;</span><span class="w"> </span><span class="na">in2=</span><span class="s">&quot;BackgroundImageFix&quot;</span><span class="w"> </span><span class="na">result=</span><span class="s">&quot;shadow&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/filter&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/defs&gt;</span>
+<span class="w">  </span><span class="nt">&lt;g</span><span class="w"> </span><span class="na">filter=</span><span class="s">&quot;url(#drop1)&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;path</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;M24 56c8-14.4 22-20.4 22-34A22 22 0 0 0 2 22c0 13.6 14 19.6 22 34Z&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;#2E8F48&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;circle</span><span class="w"> </span><span class="na">cx=</span><span class="s">&quot;24&quot;</span><span class="w"> </span><span class="na">cy=</span><span class="s">&quot;22&quot;</span><span class="w"> </span><span class="na">r=</span><span class="s">&quot;12&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;white&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!-- Replace inner glyph --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;path</span><span class="w"> </span><span class="na">d=</span><span class="s">&quot;M20 26c4-6 4-10 8-12-1 4-1 8-8 12Z&quot;</span><span class="w"> </span><span class="na">fill=</span><span class="s">&quot;#2E8F48&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/g&gt;</span>
+<span class="nt">&lt;/svg&gt;</span>
+</code></pre></div>
+
+<p>Replace color + internal glyph per semantic.</p>
+<hr />
+<h2 id="5-sample-itinerary-map-payload-provider-agnostic">5. Sample Itinerary Map Payload (Provider-Agnostic)<a class="headerlink" href="#5-sample-itinerary-map-payload-provider-agnostic" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;tripId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;forest_lake_mountain_weekend_2025_09_13&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;center&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">44.65</span><span class="p">,</span><span class="w"> </span><span class="mf">26.20</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;zoom&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;pois&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;baneasa_forest&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Băneasa Forest Trails&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;forest&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;coords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">44.5299</span><span class="p">,</span><span class="w"> </span><span class="mf">26.0802</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;activities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;e-bike&quot;</span><span class="p">,</span><span class="s2">&quot;nature&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;durationMin&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;snagov_lake&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Snagov Lake&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lake&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;coords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">44.6944</span><span class="p">,</span><span class="w"> </span><span class="mf">26.1900</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;activities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;picnic&quot;</span><span class="p">,</span><span class="s2">&quot;kayak&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;durationMin&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;moara_vlasiei&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Moara Vlăsiei&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;culture&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;coords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">44.6805</span><span class="p">,</span><span class="w"> </span><span class="mf">26.0487</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;activities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ride&quot;</span><span class="p">,</span><span class="s2">&quot;lunch&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;durationMin&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sinaia_loop&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sinaia Mountain Loop&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;view&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;coords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">45.3506</span><span class="p">,</span><span class="w"> </span><span class="mf">25.5474</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;activities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;trail&quot;</span><span class="p">,</span><span class="s2">&quot;scenic&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;durationMin&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;routes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;segment_day1_forest_to_snagov&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;polyline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;_seI}u~hC...&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#0D84D9&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;drive&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;segment_day2_snagov_to_sinaia&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;polyline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ymvJc`d~E...&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#2E8F48&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;drive&quot;</span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;units&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;metric&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;generatedAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-09-05T08:30:00Z&quot;</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>(Polylines truncated.)</p>
+<hr />
+<h2 id="6-embedding-examples">6. Embedding Examples<a class="headerlink" href="#6-embedding-examples" title="Permanent link">&para;</a></h2>
+<h3 id="google-maps-simplified">Google Maps (simplified)<a class="headerlink" href="#google-maps-simplified" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;map&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;height:480px&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&amp;libraries=maps&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./itinerary.json&#39;</span><span class="w"> </span><span class="nx">assert</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;json&#39;</span><span class="w"> </span><span class="p">};</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nb">Map</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;map&#39;</span><span class="p">),</span><span class="w"> </span><span class="p">{</span><span class="nx">center</span><span class="o">:</span><span class="p">{</span><span class="nx">lat</span><span class="o">:</span><span class="nx">data</span><span class="p">.</span><span class="nx">center</span><span class="p">[</span><span class="mf">0</span><span class="p">],</span><span class="nx">lng</span><span class="o">:</span><span class="nx">data</span><span class="p">.</span><span class="nx">center</span><span class="p">[</span><span class="mf">1</span><span class="p">]},</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="nx">data</span><span class="p">.</span><span class="nx">zoom</span><span class="p">});</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">iconFor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">kind</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="sb">`/icons/</span><span class="si">${</span><span class="nx">kind</span><span class="si">}</span><span class="sb">.svg`</span><span class="p">,</span><span class="w"> </span><span class="nx">scaledSize</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">Size</span><span class="p">(</span><span class="mf">48</span><span class="p">,</span><span class="mf">56</span><span class="p">)</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">data</span><span class="p">.</span><span class="nx">pois</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">Marker</span><span class="p">({</span><span class="nx">map</span><span class="p">,</span><span class="w"> </span><span class="nx">position</span><span class="o">:</span><span class="p">{</span><span class="nx">lat</span><span class="o">:</span><span class="nx">p</span><span class="p">.</span><span class="nx">coords</span><span class="p">[</span><span class="mf">0</span><span class="p">],</span><span class="nx">lng</span><span class="o">:</span><span class="nx">p</span><span class="p">.</span><span class="nx">coords</span><span class="p">[</span><span class="mf">1</span><span class="p">]},</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="nx">iconFor</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">kind</span><span class="p">),</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">name</span><span class="p">}));</span>
+<span class="w">  </span><span class="c1">// Decode polyline example (requires polyline decoder util)</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3 id="bing-maps-simplified">Bing Maps (simplified)<a class="headerlink" href="#bing-maps-simplified" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;map&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;height:480px&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://www.bing.com/api/maps/mapcontrol?key=YOUR_KEY&quot;</span> <span class="na">async</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">loadMapScenario</span><span class="p">(){</span>
+<span class="w">  </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;itinerary.json&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">r</span><span class="p">=&gt;</span><span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">()).</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Microsoft</span><span class="p">.</span><span class="nx">Maps</span><span class="p">.</span><span class="nb">Map</span><span class="p">(</span><span class="s1">&#39;#map&#39;</span><span class="p">,{</span><span class="w"> </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Microsoft</span><span class="p">.</span><span class="nx">Maps</span><span class="p">.</span><span class="nx">Location</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">center</span><span class="p">[</span><span class="mf">0</span><span class="p">],</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">center</span><span class="p">[</span><span class="mf">1</span><span class="p">]),</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">zoom</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">data</span><span class="p">.</span><span class="nx">pois</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Microsoft</span><span class="p">.</span><span class="nx">Maps</span><span class="p">.</span><span class="nx">Pushpin</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">Microsoft</span><span class="p">.</span><span class="nx">Maps</span><span class="p">.</span><span class="nx">Location</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">coords</span><span class="p">[</span><span class="mf">0</span><span class="p">],</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">coords</span><span class="p">[</span><span class="mf">1</span><span class="p">]),</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="sb">`/icons/</span><span class="si">${</span><span class="nx">p</span><span class="p">.</span><span class="nx">kind</span><span class="si">}</span><span class="sb">.svg`</span><span class="p">,</span><span class="w"> </span><span class="nx">anchor</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Microsoft</span><span class="p">.</span><span class="nx">Maps</span><span class="p">.</span><span class="nx">Point</span><span class="p">(</span><span class="mf">24</span><span class="p">,</span><span class="mf">56</span><span class="p">)</span><span class="w"> </span><span class="p">});</span>
+<span class="w">      </span><span class="nx">map</span><span class="p">.</span><span class="nx">entities</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">pin</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<hr />
+<h2 id="7-interaction-model">7. Interaction Model<a class="headerlink" href="#7-interaction-model" title="Permanent link">&para;</a></h2>
+<p><img alt="Example day detail card layout" src="../images/itinerary-day-detail.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hover / Tap POI card</td>
+<td>Map marker pulses + route segment highlight (thicker stroke)</td>
+</tr>
+<tr>
+<td>Map marker click</td>
+<td>Scrolls corresponding segment card into view + brief rationale toast</td>
+</tr>
+<tr>
+<td>Swap Activity</td>
+<td>Opens modal listing compatible alternatives (same difficulty tag)</td>
+</tr>
+<tr>
+<td>Adjust Duration</td>
+<td>Regenerates affected route segments + recalculates drive time slack</td>
+</tr>
+<tr>
+<td>Budget Filter</td>
+<td>Re-colors costlier POIs (amber) + suggests cheaper substitutes</td>
+</tr>
+<tr>
+<td>Save / Boost Similar</td>
+<td>Stores vector embedding for reinforcement + logs telemetry</td>
+</tr>
+</tbody>
+</table>
+<p>Keyboard support: <code>Tab</code> cycles markers → pressing <code>Enter</code> focuses card. ARIA labels include <code>name, activity types, estimated duration</code>.</p>
+<hr />
+<h2 id="8-accessibility-internationalization">8. Accessibility &amp; Internationalization<a class="headerlink" href="#8-accessibility-internationalization" title="Permanent link">&para;</a></h2>
+<ul>
+<li>WCAG AA contrast for marker inner glyph (white on saturated base &gt; 4.5:1). </li>
+<li>Provide text alt list of POIs beneath map for screen readers.</li>
+<li>Use locale-aware formatting for distance/time (e.g., km vs mi).</li>
+<li>Diacritics preserved for Romanian names (UTF‑8, no ASCII fallback).</li>
+</ul>
+<hr />
+<h2 id="9-performance-considerations">9. Performance Considerations<a class="headerlink" href="#9-performance-considerations" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First Paint Delay</td>
+<td>Lazy-load map script after header visible (<code>IntersectionObserver</code>).</td>
+</tr>
+<tr>
+<td>Marker Jank</td>
+<td>Batch marker adds inside <code>requestIdleCallback</code> for large sets.</td>
+</tr>
+<tr>
+<td>Excess Route Decoding</td>
+<td>Pre-simplify polylines server-side (Douglas-Peucker).</td>
+</tr>
+<tr>
+<td>Mobile Memory</td>
+<td>Offer static preview image → tap to load full map.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-telemetry-events">10. Telemetry Events<a class="headerlink" href="#10-telemetry-events" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Payload Snippet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>itinerary_view</code></td>
+<td><code>{ tripId, profileTags, weatherWindow }</code></td>
+</tr>
+<tr>
+<td><code>poi_focus</code></td>
+<td><code>{ tripId, poiId, source: 'map|list' }</code></td>
+</tr>
+<tr>
+<td><code>swap_requested</code></td>
+<td><code>{ tripId, segmentId, originalPoiId }</code></td>
+</tr>
+<tr>
+<td><code>duration_adjust</code></td>
+<td><code>{ tripId, deltaDays }</code></td>
+</tr>
+<tr>
+<td><code>export_invoke</code></td>
+<td><code>{ tripId, format: 'pdf|calendar' }</code></td>
+</tr>
+<tr>
+<td><code>feedback_action</code></td>
+<td><code>{ tripId, targetId, action: 'save|boost|mute' }</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-data-model-alignment">11. Data Model Alignment<a class="headerlink" href="#11-data-model-alignment" title="Permanent link">&para;</a></h2>
+<p>Each POI maps to a <code>Petal</code> (see <code>specs/petal_schema.md</code>) and segments aggregate petals into a <code>TripDay</code>. Route metadata supplements petal relational edges (sequence + segment travel mode).</p>
+<hr />
+<h2 id="12-future-enhancements">12. Future Enhancements<a class="headerlink" href="#12-future-enhancements" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Offline snapshot (static vector tile + simplified polylines).</li>
+<li>3D terrain preview for mountain segments.</li>
+<li>Battery consumption estimator for e‑bike legs.</li>
+<li>Collaborative live editing (WebSocket diff sync).</li>
+<li>Heatmap overlay (popular paths vs personal recommendations).</li>
+</ul>
+<hr />
+<h2 id="13-cross-links">13. Cross-Links<a class="headerlink" href="#13-cross-links" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Source Itinerary Preview: <code>weekend-bucharest-ebike.md</code></li>
+<li>Divergent Search Entry Point: <code>search-refinement.md</code></li>
+<li>RAG Flow &amp; Caching: <code>rag_pipeline.md</code> (for regeneration triggers)</li>
+</ul>
+<hr />
+<p><em>Last updated: 2025-09-05</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2025 BloomTrip
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/dhont/bloomtrip" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "content.code.copy", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+    
+  </body>
+</html>

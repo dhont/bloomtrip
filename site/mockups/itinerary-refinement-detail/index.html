@@ -1,0 +1,1840 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Open-source travel planning platform powered by Azure AI Search, Azure OpenAI, and multi-source enrichment. RAG-based itinerary generation, smart caching, and TOS-compliant integration with open and partner data.
+">
+      
+      
+      
+        <link rel="canonical" href="https://bloomtripbeta.readthedocs.io/mockups/itinerary-refinement-detail/">
+      
+      
+        <link rel="prev" href="../itinerary-map-page/">
+      
+      
+        <link rel="next" href="../trip-in-progress/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+    
+    
+      
+        <title>Itinerary Refinement Detail - BloomTrip Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/mermaid-theme.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#itinerary-detail-refinement-mockup" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="BloomTrip Documentation" class="md-header__button md-logo" aria-label="BloomTrip Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BloomTrip Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Itinerary Refinement Detail
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dhont/bloomtrip" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bloomtrip
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BloomTrip Documentation" class="md-nav__button md-logo" aria-label="BloomTrip Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    BloomTrip Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dhont/bloomtrip" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bloomtrip
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_project-overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_requirements-spec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Requirements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_solution-design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solution Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feasibility-azure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure Feasibility
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_market-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Market Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../positioning-and-messaging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Positioning & Messaging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../one-pager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    One-Pager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/azure_overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/rag_flow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAG Flow Diagram
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Specs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Specs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specs/petal_schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Petal Schema
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specs/trip_schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trip Schema
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specs/user_profile_schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Profile Schema
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specs/api_endpoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Endpoints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rag_pipeline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Caching & RAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Operations
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            Operations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring & Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Roadmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Mockups
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            Mockups
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../weekend-bucharest-ebike/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bucharest E-Bike Weekend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../search-refinement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Search Refinement Mockup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../itinerary-map-page/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Itinerary Map Page
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Itinerary Refinement Detail
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Itinerary Refinement Detail
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Purpose
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-page-layout-regions" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Page Layout Regions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-refinement-actions-ux-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Refinement Actions &amp; UX Flows
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-smart-suggestions-ideas-to-make-it-even-better" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Smart Suggestions (“Ideas to Make It Even Better”)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-segment-card-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Segment Card Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-map-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Map Enhancements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-custom-marker-palette-bloomtrip" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Custom Marker Palette (BloomTrip)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-adjust-prompt-template-delta-regeneration" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Adjust Prompt Template (Delta Regeneration)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-telemetry-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Telemetry Events
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-performance-cost-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Performance &amp; Cost Notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-accessibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Accessibility
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-cross-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Cross-Links
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-live-petals-drag-drop-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Live Petals Drag &amp; Drop Interaction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Live Petals Drag & Drop Interaction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interaction-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interaction Flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Constraints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-cues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Cues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#telemetry-additions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Telemetry Additions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delta-prompt-insert-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delta Prompt (Insert Example)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-conflict-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error / Conflict Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessibility
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trip-in-progress/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trip In Progress View
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../navigation-picker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Navigation Picker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trip-feedback-survey/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Post-Trip Feedback Survey
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-dashboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../on-trip-mode-transition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    On-Trip Mode Transition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trip-builder-start/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trip Builder Start
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="itinerary-detail-refinement-mockup">Itinerary Detail &amp; Refinement Mockup<a class="headerlink" href="#itinerary-detail-refinement-mockup" title="Permanent link">&para;</a></h1>
+<p><img alt="Interactive refinement view showing header, refinement rail, day segments and map" src="../images/itinerary-refinement-detail.png" />
+<em>Figure 4. Enhanced itinerary refinement view with smart suggestions panel, refinement rail, and synchronized map/segment interactions.</em></p>
+<blockquote>
+<p>This mockup extends the base itinerary map page by adding real‑time refinement, smart enhancement suggestions, and feedback instrumentation so a static idea becomes a living, user‑shaped plan.</p>
+</blockquote>
+<hr />
+<h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
+<p>Transform a selected suggestion ("Choose this trip") into an interactive planning surface where the user can: tweak scope, swap activities, extend or shrink duration, inject companions or constraints, and immediately see regenerated rationale — all while preserving provenance (sources) and personalization continuity.</p>
+<hr />
+<h2 id="2-page-layout-regions">2. Page Layout Regions<a class="headerlink" href="#2-page-layout-regions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Description</th>
+<th>Key Components</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A. Header Card</td>
+<td>Title, date window selector, profile match badges</td>
+<td>Trip title, date picker, badges (E‑Bike, Nature, Camper, Family)</td>
+</tr>
+<tr>
+<td>B. Hero Media</td>
+<td>Large hero image or carousel (forest, lake, camper)</td>
+<td>Responsive image, optional video teaser</td>
+</tr>
+<tr>
+<td>C. Refinement Rail</td>
+<td>Always‑visible quick actions</td>
+<td>Add Details, Adjust Duration, Swap Activity, Add Companions, Budget Filter, Weather Mode Toggle</td>
+</tr>
+<tr>
+<td>D. Smart Suggestions Panel</td>
+<td>Dynamic improvement ideas</td>
+<td>"Ideas to Make It Even Better" card with contextual chips</td>
+</tr>
+<tr>
+<td>E. Day / Segment Column</td>
+<td>Ordered day blocks with editable segments</td>
+<td>Segment cards, drag handle, time badges, action menu</td>
+</tr>
+<tr>
+<td>F. Interactive Map</td>
+<td>POIs + routes + overlays (sticky/right)</td>
+<td>Custom SVG markers, route polylines, layer toggles</td>
+</tr>
+<tr>
+<td>G. Action Footer</td>
+<td>Persistence &amp; collaboration</td>
+<td>Save, Share, Export, Adjust Again</td>
+</tr>
+<tr>
+<td>H. Feedback Micro Bar</td>
+<td>Reinforcement signals</td>
+<td>Save, Boost, Mute, Explain buttons per segment</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-refinement-actions-ux-flows">3. Refinement Actions &amp; UX Flows<a class="headerlink" href="#3-refinement-actions-ux-flows" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>UX Pattern</th>
+<th>Backend Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add Details</td>
+<td>Inline prompt (natural language)</td>
+<td>Triggers RAG adjust prompt; stores refinement intent token</td>
+</tr>
+<tr>
+<td>Adjust Duration</td>
+<td>Dropdown (1–4 days) or slider</td>
+<td>Re-query candidate POIs for added/removed days; recalc drive &amp; rest windows</td>
+</tr>
+<tr>
+<td>Swap Activity</td>
+<td>Modal with filtered alternatives (same tags)</td>
+<td>Replacement logged; original kept for undo; feedback event <code>swap_activity</code></td>
+</tr>
+<tr>
+<td>Add Companions</td>
+<td>Chip selector (Kids, Teen, Pet, Friends)</td>
+<td>Re-scores family_fit &amp; safety tags; updates user profile delta</td>
+</tr>
+<tr>
+<td>Budget Filter</td>
+<td>Range control (Low ↔ Higher)</td>
+<td>Filters cost_band, suggests substitutes; caches previous plan for revert</td>
+</tr>
+<tr>
+<td>Weather Mode</td>
+<td>Toggle (Outdoor / Mixed / Indoor fallback)</td>
+<td>Adjusts weather_suitability weighting + alternative retrieval</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-smart-suggestions-ideas-to-make-it-even-better">4. Smart Suggestions (“Ideas to Make It Even Better”)<a class="headerlink" href="#4-smart-suggestions-ideas-to-make-it-even-better" title="Permanent link">&para;</a></h2>
+<p>Dynamic chips generated from context gaps:</p>
+<ul>
+<li>"Add a scenic detour" (if elevation scenic score low)</li>
+<li>"Include a kid challenge stop" (if teen flag true &amp; no active challenge)</li>
+<li>"Add a low‑light indoor fallback" (if afternoon showers risk)</li>
+<li>"Insert a local food stop" (if no dining anchor on Day 1)</li>
+</ul>
+<p>Each chip triggers a lightweight retrieval + localized partial regeneration rather than full itinerary rewrite (scope control reduces token cost &amp; latency).</p>
+<hr />
+<h2 id="5-segment-card-structure">5. Segment Card Structure<a class="headerlink" href="#5-segment-card-structure" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code>&lt;SegmentCard&gt;
+  Icon (semantic color)
+  Title (e.g., Băneasa Forest Loop)
+  Tags: [E‑Bike][Forest][Shaded]
+  Time Block: 09:00–11:00 (editable)
+  Distance / Elev Gain / Drive Time Chips
+  Rationale (1 sentence) + (Explain) link
+  Inline Actions: Save | Boost | Mute | Swap | Move | Details
+&lt;/SegmentCard&gt;
+</code></pre></div>
+
+<p><strong>Inline edit affordances:</strong> time picker, duration drop‑down, optional notes field.</p>
+<hr />
+<h2 id="6-map-enhancements">6. Map Enhancements<a class="headerlink" href="#6-map-enhancements" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Marker Hover / Card Sync</td>
+<td>Hover highlights card; focus scrolls into view</td>
+</tr>
+<tr>
+<td>Layer Toggles</td>
+<td>Food • Scenic • Family • Charging • Weather Risk</td>
+</tr>
+<tr>
+<td>Route Segments</td>
+<td>Color-coded by day (Day1 blue, Day2 green, etc.)</td>
+</tr>
+<tr>
+<td>Offline Preview</td>
+<td>Static image fallback before script load</td>
+</tr>
+<tr>
+<td>Selection Add</td>
+<td>Clicking empty map area opens "Add Nearby Stop" search (radius preset)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-custom-marker-palette-bloomtrip">7. Custom Marker Palette (BloomTrip)<a class="headerlink" href="#7-custom-marker-palette-bloomtrip" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Base Color</th>
+<th>Inner Glyph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Forest / Trail</td>
+<td>#2E8F48</td>
+<td>Leaf / path swirl</td>
+</tr>
+<tr>
+<td>Lake / Water</td>
+<td>#0D84D9</td>
+<td>Wave triple</td>
+</tr>
+<tr>
+<td>Scenic View</td>
+<td>#6F4DF5</td>
+<td>Mountain + sun</td>
+</tr>
+<tr>
+<td>Camper / Overnight</td>
+<td>#1B74D2</td>
+<td>Camper silhouette</td>
+</tr>
+<tr>
+<td>Food / Local</td>
+<td>#FF7043</td>
+<td>Utensils rounded</td>
+</tr>
+<tr>
+<td>Cultural / Heritage</td>
+<td>#FDBA4D</td>
+<td>Arch / column</td>
+</tr>
+<tr>
+<td>Fallback / Indoor</td>
+<td>#455A64</td>
+<td>Roof silhouette</td>
+</tr>
+</tbody>
+</table>
+<p><em>All markers share 48×56 rounded pin SVG with white inner circle.</em></p>
+<hr />
+<h2 id="8-adjust-prompt-template-delta-regeneration">8. Adjust Prompt Template (Delta Regeneration)<a class="headerlink" href="#8-adjust-prompt-template-delta-regeneration" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code>System: You are a precise trip refinement planner. Modify ONLY the specified parts; preserve unchanged segments &amp; original sources. Cite sources.
+User: Original segment JSON (abbrev)...
+Adjustment: &quot;Add a lakeside picnic stop after the forest loop and shorten the afternoon ride.&quot;
+Constraints: Drive time ≤ 2h/day; family + teen; e‑bike friendly focus.
+Return: Updated segments array + rationale deltas per changed segment.
+</code></pre></div>
+
+<hr />
+<h2 id="9-telemetry-events">9. Telemetry Events<a class="headerlink" href="#9-telemetry-events" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Payload Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>itinerary_refine</td>
+<td>{tripId, userId, action:"add_details", tokens, latencyMs}</td>
+</tr>
+<tr>
+<td>segment_swap</td>
+<td>{tripId, segmentId, oldPoi, newPoi}</td>
+</tr>
+<tr>
+<td>duration_change</td>
+<td>{tripId, oldDays, newDays}</td>
+</tr>
+<tr>
+<td>chip_apply</td>
+<td>{tripId, chipType}</td>
+</tr>
+<tr>
+<td>map_marker_focus</td>
+<td>{tripId, poiId, source:"map_or_card"}</td>
+</tr>
+<tr>
+<td>export_invoke</td>
+<td>{tripId, format:"pdf_or_calendar"}</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-performance-cost-notes">10. Performance &amp; Cost Notes<a class="headerlink" href="#10-performance-cost-notes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full itinerary re-generation</td>
+<td>Delta prompts (segment scope)</td>
+</tr>
+<tr>
+<td>Excess embeddings</td>
+<td>Cache POI embeddings; only embed new user free‑text additions</td>
+</tr>
+<tr>
+<td>Map script weight</td>
+<td>Lazy load after first interaction / hero in view</td>
+</tr>
+<tr>
+<td>Ranking latency</td>
+<td>Pre-rank alternative POIs nightly; in-session only apply lightweight re-score</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-accessibility">11. Accessibility<a class="headerlink" href="#11-accessibility" title="Permanent link">&para;</a></h2>
+<ul>
+<li>All actions reachable via keyboard (Tab → segment → Enter to expand actions)</li>
+<li>ARIA roles: list (segments), listitem (segment), button (swap/add)</li>
+<li>High contrast marker glyphs (WCAG AA)</li>
+<li>Motion reduction: disable map marker pulse when reduced motion enabled</li>
+</ul>
+<hr />
+<h2 id="12-cross-links">12. Cross-Links<a class="headerlink" href="#12-cross-links" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Base Itinerary Map Concept: <code>itinerary-map-page.md</code></li>
+<li>Divergent Search Entry: <code>search-refinement.md</code></li>
+<li>Source Preview Example: <code>weekend-bucharest-ebike.md</code></li>
+</ul>
+<hr />
+<p>Last updated: 2025-09-05</p>
+<hr />
+<h2 id="13-live-petals-drag-drop-interaction">13. Live Petals Drag &amp; Drop Interaction<a class="headerlink" href="#13-live-petals-drag-drop-interaction" title="Permanent link">&para;</a></h2>
+<p><img alt="Drag &amp; drop of a saved Petal onto a day segment with immediate route + segment update" src="../images/petals-live-map-interaction.png" />
+<em>Figure 5. Live Petals drag‑and‑drop: user drags a saved / popular Petal from the suggestions rail onto a specific day segment; the segment inserts inline, route polyline + ordering update in real time, and a delta regeneration prompt updates only affected rationale.</em></p>
+<h3 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h3>
+<p>Accelerate micro-adjustments by letting users visually compose itineraries: add, reorder, or replace activities ("Petals") directly on the map or within the day column without a full textual prompt.</p>
+<h3 id="interaction-flow">Interaction Flow<a class="headerlink" href="#interaction-flow" title="Permanent link">&para;</a></h3>
+<ol>
+<li>User hovers a Petal chip (Saved or Popular) → map highlights candidate insertion anchors (gap markers between existing segments).</li>
+<li>Drag start emits <code>petal_drag_start</code> telemetry; route preview ghost line renders (dashed).</li>
+<li>Drop onto a gap (inserts new segment with provisional time estimate) or onto an existing segment (opens swap mini‑modal to confirm replace vs insert position).</li>
+<li>System issues a constrained delta prompt containing ONLY impacted segments (preceding + new + following) for rationale + timing recalculation.</li>
+<li>UI optimistic‑updates ordering &amp; route polyline; reconciliation occurs when regeneration returns (diff merges if minor duration drift).</li>
+</ol>
+<h3 id="key-constraints">Key Constraints<a class="headerlink" href="#key-constraints" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Max 2 concurrent optimistic insertions (queue additional interactions with subtle toast).</li>
+<li>Reject drop if added drive time would exceed daily limit (pre-check distance matrix estimate &lt; threshold).</li>
+<li>Maintain provenance: newly inserted Petal retains source + popularity metadata.</li>
+</ul>
+<h3 id="visual-cues">Visual Cues<a class="headerlink" href="#visual-cues" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Cue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Drag Hover (valid)</td>
+<td>Anchor slot glows + subtle scale</td>
+</tr>
+<tr>
+<td>Drag Hover (invalid)</td>
+<td>Slot shows red outline + pulse</td>
+</tr>
+<tr>
+<td>Optimistic Insert</td>
+<td>Segment card skeleton shimmer</td>
+</tr>
+<tr>
+<td>Reconciled</td>
+<td>Brief green check icon fade-in</td>
+</tr>
+</tbody>
+</table>
+<h3 id="telemetry-additions">Telemetry Additions<a class="headerlink" href="#telemetry-additions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Payload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>petal_drag_start</td>
+<td>{tripId, petalId, source:"saved|popular"}</td>
+</tr>
+<tr>
+<td>petal_drag_cancel</td>
+<td>{tripId, petalId, durationMs}</td>
+</tr>
+<tr>
+<td>petal_insert</td>
+<td>{tripId, petalId, positionIndex, optimistic:true}</td>
+</tr>
+<tr>
+<td>petal_swap</td>
+<td>{tripId, oldSegmentId, newPetalId}</td>
+</tr>
+<tr>
+<td>delta_regen_invoke</td>
+<td>{tripId, scope:"segments", count:3, tokens}</td>
+</tr>
+</tbody>
+</table>
+<h3 id="delta-prompt-insert-example">Delta Prompt (Insert Example)<a class="headerlink" href="#delta-prompt-insert-example" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>System: You are an itinerary delta adjuster. Recalculate ONLY timing + rationale for affected window.
+Context: JSON for segments 3–5 (before insertion) + new Petal metadata.
+User Action: Inserted petal_id=snagov_picnic after segment 3.
+Constraints: Keep total daily drive ≤ 2h, preserve prior segment ordering.
+Return: Updated segments 3–6 (ISO start times, durations, rationale_deltas[]).
+</code></pre></div>
+
+<h3 id="error-conflict-handling">Error / Conflict Handling<a class="headerlink" href="#error-conflict-handling" title="Permanent link">&para;</a></h3>
+<ul>
+<li>If regeneration increases drive time beyond constraint: revert insertion (toast: "Couldn’t fit that — try a closer stop").</li>
+<li>If user performs second drag before first delta resolves: show inline spinner badge on pending segment(s).</li>
+</ul>
+<h3 id="accessibility">Accessibility<a class="headerlink" href="#accessibility" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Petals list supports keyboard: Enter = pick up, Arrow keys = move focus among anchors, Space = drop.</li>
+<li>Live region announces: "Inserted Picnic Stop after Forest Loop."</li>
+</ul>
+<hr />
+<p>Figure 5 added &amp; section updated: 2025-09-05</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2025 BloomTrip
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/dhont/bloomtrip" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "content.code.copy", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+    
+  </body>
+</html>

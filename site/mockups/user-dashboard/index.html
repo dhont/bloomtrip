@@ -1,0 +1,1828 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Open-source travel planning platform powered by Azure AI Search, Azure OpenAI, and multi-source enrichment. RAG-based itinerary generation, smart caching, and TOS-compliant integration with open and partner data.
+">
+      
+      
+      
+        <link rel="canonical" href="https://bloomtripbeta.readthedocs.io/mockups/user-dashboard/">
+      
+      
+        <link rel="prev" href="../trip-feedback-survey/">
+      
+      
+        <link rel="next" href="../on-trip-mode-transition/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+    
+    
+      
+        <title>User Dashboard - BloomTrip Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/mermaid-theme.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#user-dashboard-personal-travel-hub" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="BloomTrip Documentation" class="md-header__button md-logo" aria-label="BloomTrip Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BloomTrip Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              User Dashboard
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dhont/bloomtrip" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bloomtrip
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BloomTrip Documentation" class="md-nav__button md-logo" aria-label="BloomTrip Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    BloomTrip Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dhont/bloomtrip" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    bloomtrip
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_project-overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_requirements-spec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Requirements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_solution-design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solution Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feasibility-azure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure Feasibility
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_market-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Market Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../positioning-and-messaging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Positioning & Messaging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../one-pager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    One-Pager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/azure_overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/rag_flow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAG Flow Diagram
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Specs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Specs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specs/petal_schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Petal Schema
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specs/trip_schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trip Schema
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specs/user_profile_schema/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Profile Schema
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../specs/api_endpoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Endpoints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rag_pipeline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Caching & RAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compliance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compliance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Operations
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            Operations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring & Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Roadmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Mockups
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            Mockups
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../weekend-bucharest-ebike/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bucharest E-Bike Weekend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../search-refinement/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Search Refinement Mockup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../itinerary-map-page/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Itinerary Map Page
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../itinerary-refinement-detail/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Itinerary Refinement Detail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trip-in-progress/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trip In Progress View
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../navigation-picker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Navigation Picker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trip-feedback-survey/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Post-Trip Feedback Survey
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    User Dashboard
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    User Dashboard
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Purpose
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-top-layout-structure-unified-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Top Layout Structure (Unified Concept)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-core-component-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Core Component Definitions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-data-query-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Data &amp; Query Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Data & Query Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-impact-narrative-prompt-system-instruction-excerpt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Impact Narrative Prompt (System Instruction Excerpt)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-caching-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Caching &amp; Performance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-personalization-rag-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Personalization &amp; RAG Integration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-telemetry-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Telemetry Events
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-edge-cases-fallbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Edge Cases &amp; Fallbacks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-accessibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Accessibility
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-security-privacy-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Security &amp; Privacy Notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-future-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Future Enhancements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-implementation-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Implementation Checklist
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-mobile-adaptation-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Mobile Adaptation Details
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-tech-notes-expanded" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Tech Notes (Expanded)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-open-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. Open Questions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../on-trip-mode-transition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    On-Trip Mode Transition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trip-builder-start/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trip Builder Start
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="user-dashboard-personal-travel-hub">User Dashboard (Personal Travel Hub)<a class="headerlink" href="#user-dashboard-personal-travel-hub" title="Permanent link">&para;</a></h1>
+<p><img alt="Desktop user dashboard showing greeting, quick action tiles, upcoming trips carousel, saved petals grid, seasonal suggestions, feedback metrics" src="../images/user-dashboard-desktop.png" />
+<em>Figure 10a. Desktop User Dashboard: full-width layout with horizontal trip carousel, multi-column saved petals grid, seasonal rails, and feedback impact panel.</em></p>
+<p><img alt="Mobile user dashboard with stacked greeting, quick actions row, single upcoming trip card, swipeable saved petals, seasonal carousel, feedback summary" src="../images/user-dashboard-mobile.png" />
+<em>Figure 10b. Mobile User Dashboard: condensed thumb-first stack prioritizing next actions (navigate, add petal, continue planning) and swipeable rails.</em></p>
+<p><img alt="Legacy composite user dashboard mock (combined)" src="../images/dashboard.png" />
+<em>Figure 10. Legacy composite dashboard mock retained for historical reference (desktop/mobile supersede).</em> </p>
+<h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
+<p>Provide a personalized, low-latency landing surface that answers: "What should I do next?" while showcasing progress (upcoming trips) and discovery (seasonal/popular petals) aligned with profile preferences.</p>
+<h2 id="2-top-layout-structure-unified-concept">2. Top Layout Structure (Unified Concept)<a class="headerlink" href="#2-top-layout-structure-unified-concept" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Zone</th>
+<th>Description</th>
+<th>Primary Actions</th>
+<th>Data Sources</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Greeting &amp; Quick Actions</td>
+<td>Personalized welcome ("Good morning, Dragos 🌞 — ready for your next weekend escape?") + time-of-day context</td>
+<td>Plan New Trip, Saved Petals, Upcoming Trips, Feedback &amp; History</td>
+<td>UserProfile + time-of-day heuristic</td>
+</tr>
+<tr>
+<td>Upcoming Trips</td>
+<td>Cards (desktop: horizontal carousel; mobile: single primary + pager dots) with name, dates, status, countdown, navigate button</td>
+<td>Open Trip, Navigate, Edit</td>
+<td>Trip Schema, cached travel metrics</td>
+</tr>
+<tr>
+<td>Saved Petals Library</td>
+<td>Filter chips (Nature, Family, Water, E‑bikes, Popular Nearby) + grid/list (responsive) + newly discovered highlight</td>
+<td>Add to Trip, Remove Save, Open Detail</td>
+<td>Petal Schema, saved_petals, discovered_petals</td>
+</tr>
+<tr>
+<td>Seasonal &amp; Popular Suggestions</td>
+<td>Curated rails (autumn festivals, e‑bike loops, water activities) blended with profile preferences</td>
+<td>View Petal, Add to Trip</td>
+<td>Popularity cache + preference weights + seasonality</td>
+</tr>
+<tr>
+<td>Feedback &amp; History</td>
+<td>Recent trips recap links, ratings distribution, "Your impact" RAG summary</td>
+<td>Open Recap, Rate Missed Petals</td>
+<td>Trip feedback, petal_feedback, popularity deltas</td>
+</tr>
+<tr>
+<td>Notifications &amp; Nudges</td>
+<td>Contextual actionable prompts (events, proximity, expiring seasonal items)</td>
+<td>Accept (add), Dismiss</td>
+<td>Rules engine (events + geo + calendar)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-core-component-definitions">3. Core Component Definitions<a class="headerlink" href="#3-core-component-definitions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Fields / Elements</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quick Action Tile</td>
+<td>icon, label, hotkey, aria-label</td>
+<td>Large hit area (min 44px)</td>
+</tr>
+<tr>
+<td>Trip Card</td>
+<td>cover_image, title, date_range, status_badge, countdown, navigate_btn</td>
+<td>Countdown if start_date &gt; now</td>
+</tr>
+<tr>
+<td>Petal Tile</td>
+<td>thumbnail, name, tags (max 3), add_to_trip_btn, new_badge</td>
+<td>New badge for discovered within last trip session</td>
+</tr>
+<tr>
+<td>Suggestion Card</td>
+<td>emoji/icon, title, reason_tag (e.g. "seasonal"), add_btn</td>
+<td>Explanation improves trust</td>
+</tr>
+<tr>
+<td>Ratings Summary</td>
+<td>avg_rating, top_tag, total_reviews</td>
+<td>Derived nightly cached aggregate</td>
+</tr>
+<tr>
+<td>Impact Banner</td>
+<td>text_dynamic, influenced_count</td>
+<td>Generated via RAG summary template</td>
+</tr>
+<tr>
+<td>Notification Item</td>
+<td>message, cta_label, dismiss</td>
+<td>Distinct icon per rule category</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-data-query-strategy">4. Data &amp; Query Strategy<a class="headerlink" href="#4-data-query-strategy" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Saved petals: single batched lookup (IDs → petals) with partial projection.</li>
+<li>Upcoming trips: limit to next 3 sorted by start_date; prefetch active trip details.</li>
+<li>Seasonal suggestions: Redis key <code>popular:petals:{region}:{season}</code> + personalization rerank.</li>
+<li>Impact narrative: RAG template combining (petal_feedback deltas + popularity shifts).</li>
+</ul>
+<h3 id="example-impact-narrative-prompt-system-instruction-excerpt">Example Impact Narrative Prompt (System Instruction Excerpt)<a class="headerlink" href="#example-impact-narrative-prompt-system-instruction-excerpt" title="Permanent link">&para;</a></h3>
+<p>"Generate a concise (&lt;= 28 words) positive summary of how the user's recent ratings influenced popularity. Use concrete category or tag names. Avoid exaggeration."</p>
+<h2 id="5-caching-performance">5. Caching &amp; Performance<a class="headerlink" href="#5-caching-performance" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Data Slice</th>
+<th>Cache Layer</th>
+<th>TTL</th>
+<th>Invalidation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Saved Petal IDs</td>
+<td>profile core cache</td>
+<td>5m</td>
+<td>On add/remove save</td>
+</tr>
+<tr>
+<td>Petal Tile Projection</td>
+<td>retrieval/petal object</td>
+<td>10m</td>
+<td>Petal freshness trigger</td>
+</tr>
+<tr>
+<td>Seasonal Rail</td>
+<td>popularity snapshot</td>
+<td>30m</td>
+<td>Popularity recompute job</td>
+</tr>
+<tr>
+<td>Impact Narrative</td>
+<td>semantic response cache</td>
+<td>2h</td>
+<td>New feedback submission</td>
+</tr>
+<tr>
+<td>Upcoming Trips Summary</td>
+<td>trip read model</td>
+<td>10m</td>
+<td>Trip mutation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-personalization-rag-integration">6. Personalization &amp; RAG Integration<a class="headerlink" href="#6-personalization-rag-integration" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Seasonal rails filtered by region + seasonality + profile.favorite_tags.</li>
+<li>RAG summarizer generates "Your impact" and optional micro-suggestions (e.g., suggest rating missed petals).</li>
+<li>Diversification heuristic ensures at least one exploratory (non-overlapping tag set) suggestion if cluster homogeneity &gt; 60%.</li>
+</ul>
+<h2 id="7-telemetry-events">7. Telemetry Events<a class="headerlink" href="#7-telemetry-events" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Payload Fields (Example)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dashboard_view</td>
+<td>{ userId, savedCount, upcomingTrips, season:"autumn" }</td>
+</tr>
+<tr>
+<td>dashboard_click_quick_action</td>
+<td>{ action:"plan_trip" }</td>
+</tr>
+<tr>
+<td>dashboard_trip_card_open</td>
+<td>{ tripId, status }</td>
+</tr>
+<tr>
+<td>dashboard_navigate_launch</td>
+<td>{ tripId, provider:"google" }</td>
+</tr>
+<tr>
+<td>dashboard_petal_add_to_trip</td>
+<td>{ petalId, tripContext? }</td>
+</tr>
+<tr>
+<td>dashboard_suggestion_impression</td>
+<td>{ petalId, rail:"autumn_festivals" }</td>
+</tr>
+<tr>
+<td>dashboard_feedback_banner_open</td>
+<td>{ tripId }</td>
+</tr>
+<tr>
+<td>dashboard_notification_accept</td>
+<td>{ ruleId }</td>
+</tr>
+<tr>
+<td>dashboard_notification_dismiss</td>
+<td>{ ruleId }</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-edge-cases-fallbacks">8. Edge Cases &amp; Fallbacks<a class="headerlink" href="#8-edge-cases-fallbacks" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Handling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No upcoming trips</td>
+<td>Show CTA card: "Plan your next escape"</td>
+</tr>
+<tr>
+<td>No saved petals</td>
+<td>Replace grid with onboarding tips (add via search)</td>
+</tr>
+<tr>
+<td>Low seasonal content</td>
+<td>Expand radius or fallback to popular evergreen petals</td>
+</tr>
+<tr>
+<td>Offline mode</td>
+<td>Serve last cached snapshot + disable actions needing network</td>
+</tr>
+<tr>
+<td>API latency spike</td>
+<td>Skeleton loaders + staggered fade-in</td>
+</tr>
+<tr>
+<td>Empty feedback history</td>
+<td>Invite to rate past trip(s) via recap prompt</td>
+</tr>
+</tbody>
+</table>
+<h2 id="9-accessibility">9. Accessibility<a class="headerlink" href="#9-accessibility" title="Permanent link">&para;</a></h2>
+<ul>
+<li>All interactive tiles: 44x44 min, focus outline AA contrast.</li>
+<li>Landmark roles: header (greeting), main (content rails), complementary (feedback panel), region labels for carousels.</li>
+<li>Provide skip links to "Saved Petals" and "Suggestions" sections.</li>
+<li>ARIA live region for notifications insertion.</li>
+</ul>
+<h2 id="10-security-privacy-notes">10. Security &amp; Privacy Notes<a class="headerlink" href="#10-security-privacy-notes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exposure of private trip titles in shared device</td>
+<td>Obfuscate ("Trip 1") when privacy mode enabled</td>
+</tr>
+<tr>
+<td>Over-personalized notifications leaking companion info</td>
+<td>Avoid explicit companion names in banner text</td>
+</tr>
+<tr>
+<td>Feedback narrative hallucination</td>
+<td>Constrain prompt with numeric anchors (counts, rating deltas)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="11-future-enhancements">11. Future Enhancements<a class="headerlink" href="#11-future-enhancements" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Collaborative activity feed (recent edits by collaborators).</li>
+<li>Inline trip quick-ref panel (next upcoming day's first 3 activities).</li>
+<li>A/B testing rail placements (engagement vs decision latency).</li>
+<li>Dynamic theming based on dominant seasonal palette.</li>
+</ul>
+<h2 id="12-implementation-checklist">12. Implementation Checklist<a class="headerlink" href="#12-implementation-checklist" title="Permanent link">&para;</a></h2>
+<h2 id="13-mobile-adaptation-details">13. Mobile Adaptation Details<a class="headerlink" href="#13-mobile-adaptation-details" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Desktop</th>
+<th>Mobile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quick Actions</td>
+<td>4 tiles in a single row (wide)</td>
+<td>2x2 grid or horizontal scroll row</td>
+</tr>
+<tr>
+<td>Upcoming Trips</td>
+<td>Multi-card carousel (peek of next)</td>
+<td>Single primary card + swipe/pager</td>
+</tr>
+<tr>
+<td>Saved Petals</td>
+<td>3–4 columns grid</td>
+<td>1–2 column adaptive; horizontal chip scroll</td>
+</tr>
+<tr>
+<td>Seasonal Rails</td>
+<td>Full-width with 4 visible cards</td>
+<td>Snap carousel (1.2 card width)</td>
+</tr>
+<tr>
+<td>Feedback Panel</td>
+<td>Right-side / lower section</td>
+<td>Collapsible accordion near bottom</td>
+</tr>
+<tr>
+<td>Notifications</td>
+<td>Inline right column or top bar badge</td>
+<td>Sticky drawer / slide-up sheet</td>
+</tr>
+</tbody>
+</table>
+<p>Gestures (Mobile):</p>
+<ul>
+<li>Horizontal swipe: trip cards, seasonal rails, saved petals filters.</li>
+<li>Long-press petal: quick add/remove saved state.</li>
+<li>Swipe notification left: dismiss; right: accept (if additive action).</li>
+</ul>
+<p>Performance Considerations:</p>
+<ul>
+<li>Defer seasonal rails below fold (IntersectionObserver) to reduce initial payload.</li>
+<li>Use speculative prefetch for the most-likely next trip (based on imminence).</li>
+</ul>
+<h2 id="14-tech-notes-expanded">14. Tech Notes (Expanded)<a class="headerlink" href="#14-tech-notes-expanded" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fast petal search/filter</td>
+<td>Azure AI Search hybrid; precomputed facet counts cached</td>
+</tr>
+<tr>
+<td>Image tagging &amp; translation</td>
+<td>Cognitive Services Vision + Translator queued enrichment on ingestion</td>
+</tr>
+<tr>
+<td>Review summarization</td>
+<td>Cognitive Services Language (summarization) -&gt; persisted summary field</td>
+</tr>
+<tr>
+<td>Seasonal suggestion generation</td>
+<td>RAG: popularity snapshot + profile tag weights + prompt template</td>
+</tr>
+<tr>
+<td>Impact narrative</td>
+<td>RAG with constrained numeric anchors (rating deltas, top tag)</td>
+</tr>
+<tr>
+<td>Caching tiers</td>
+<td>Redis: profile core, retrieval sets, popularity snapshot, semantic narrative</td>
+</tr>
+<tr>
+<td>Notification rules</td>
+<td>Event ingestion -&gt; lightweight rules engine (Functions) -&gt; queue -&gt; user feed store</td>
+</tr>
+<tr>
+<td>Latency target</td>
+<td>P95 &lt; 600 ms warm (excluding large image loads)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="15-open-questions">15. Open Questions<a class="headerlink" href="#15-open-questions" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Should notifications unify with trip-specific alerts (single feed) or remain dashboard-scoped?</li>
+<li>Do we allow inline editing of trip title from card?</li>
+<li>How aggressive should exploratory suggestion diversification be (A/B)?</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quick action tile component</td>
+<td>Planned</td>
+</tr>
+<tr>
+<td>Trip carousel w/ countdown logic</td>
+<td>Planned</td>
+</tr>
+<tr>
+<td>Saved petals grid + filters</td>
+<td>Planned</td>
+</tr>
+<tr>
+<td>Seasonal rails retrieval + rerank</td>
+<td>Planned</td>
+</tr>
+<tr>
+<td>RAG impact summary endpoint</td>
+<td>Planned</td>
+</tr>
+<tr>
+<td>Notification rules engine</td>
+<td>Planned</td>
+</tr>
+<tr>
+<td>Telemetry ingestion mapping</td>
+<td>Planned</td>
+</tr>
+<tr>
+<td>Accessibility audit pass</td>
+<td>Planned</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Figure 10 / 10a / 10b added: 2025-09-05 (assets: <code>dashboard.png</code>, <code>user-dashboard-desktop.png</code>, <code>user-dashboard-mobile.png</code>).</p>
+<p>Cross-links: <code>trip-in-progress.md</code>, <code>petal_schema.md</code>, <code>trip_schema.md</code>, <code>user_profile_schema.md</code>, <code>rag_pipeline.md</code>.
+Additional Link: See <code>on-trip-mode-transition.md</code> for the in-motion experience after commit / start.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2025 BloomTrip
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/dhont/bloomtrip" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "content.code.copy", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+    
+  </body>
+</html>

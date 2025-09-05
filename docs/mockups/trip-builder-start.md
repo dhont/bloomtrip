@@ -3,8 +3,6 @@
 ![Mobile trip builder start screen showing hero prompt, three entry tiles (Promo, Saved, Recommendation) and quick start bar](images/trip-builder-start-mobile.png)
 *Figure 12. Trip Builder Start Screen (Mobile): single-column hero prompt with vertically stacked entry tiles and horizontal Quick Starts rail for rapid itinerary seeding.*
 
-> Image guidance: If a desktop variant is added later, insert it above and rename current Figure 12 to Figure 12b (desktop becomes 12a).
-
 ## 1. Purpose
 Remove friction at the very beginning of planning by letting the user begin from any "spark" (promo, saved, recommendation, theme) and immediately preview a scaffolded Day 1.
 
@@ -62,10 +60,10 @@ If user is already in On‑Trip Mode and launches a Promo:
 ## 9. Edge Cases
 | Scenario | Handling |
 |----------|----------|
-| No saved petals | Hide Saved tile; show placeholder encouraging saves via search |
+| No saved petals | Hide Saved tile; show an encouragement to save petals via search |
 | No promos active | Replace Promo tile with dynamic recommendation cluster |
 | Recommendation retrieval empty | Retry with relaxed geo radius; fallback to popular set |
-| Slow seed generation (>2s) | Show progressive skeleton (tile placeholders) |
+| Slow seed generation (>2s) | Show progressive skeleton (skeleton tiles) |
 
 ## 10. Accessibility
 - Tiles: role=button, aria-label includes tile type + primary petal name (if present).

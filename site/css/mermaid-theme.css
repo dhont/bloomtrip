@@ -1,0 +1,38 @@
+/* Mermaid dark/light adaptive styling for BloomTrip */
+:root {
+  --bt-accent: #1e5adb;
+  --bt-accent-alt: #2563eb;
+  --bt-bg: #ffffff;
+  --bt-node-bg: #f0f6ff;
+  --bt-node-border: #1e5adb;
+}
+[data-md-color-scheme="slate"] {
+  --bt-bg: #0f172a;
+  --bt-node-bg: #1e293b;
+  --bt-node-border: #3b82f6;
+}
+
+/* Generic mermaid overrides */
+.mermaid .node rect,
+.mermaid .node circle,
+.mermaid .node polygon {
+  fill: var(--bt-node-bg) !important;
+  stroke: var(--bt-node-border) !important;
+  stroke-width: 1.4px;
+}
+.mermaid .cluster rect {
+  fill: var(--bt-bg) !important;
+  stroke: var(--bt-node-border) !important;
+  stroke-dasharray: 3 3;
+}
+.mermaid .edgeLabel, .mermaid .label {
+  color: var(--md-default-fg-color);
+  font-size: 12.5px;
+}
+.mermaid .edgePath .path {
+  stroke: var(--bt-accent-alt) !important;
+  stroke-width: 1.3px;
+}
+.mermaid .marker {
+  fill: var(--bt-accent-alt) !important;
+}

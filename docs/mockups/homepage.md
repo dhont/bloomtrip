@@ -2,8 +2,6 @@
 
 **Tagline:** Where your weekends come alive.
 
-> (Image placeholder removed until asset is added.)
-
 ---
 
 ## Purpose
