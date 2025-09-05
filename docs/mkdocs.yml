@@ -37,6 +37,11 @@ theme:
 extra_css:
   - css/mermaid-theme.css
 
+# Load Mermaid runtime (render diagrams client-side). PDF export may not execute JS; consider build-time plugin later.
+extra_javascript:
+  - https://unpkg.com/mermaid@10.9.3/dist/mermaid.min.js
+  - js/mermaid-init.js
+
 plugins:
   - search
 

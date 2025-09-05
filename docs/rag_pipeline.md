@@ -13,10 +13,9 @@ See domain schemas: `specs/petal_schema.md`, `specs/trip_schema.md`, `specs/user
 flowchart LR
 	subgraph Client
 		Q[User Query / Action]\n(search, saved petal, promo)
-	end
 
 	subgraph API Layer
-		INT[Intention Normalization]\n(intent_type, filters, geo cluster)
+```mermaid
 		CK{Retrieval Set Cache Hit?}
 		RETR[Hybrid Retrieval\nAI Search BM25 + Vector + Filters]
 		ENR{Needs Enrichment?}\n(stale / missing fields)
@@ -78,7 +77,6 @@ Key invalidation triggers: provider delta events, license flag changes, freshnes
 
 Normalize raw user input (text, structured filters, saved petal clicks) into an `IntentRequest` object.
 
-| Field | Description |
 |-------|-------------|
 | `raw_text` | Original user string (may be empty for UI-triggered actions) |
 | `profile_id` | Reference to UserProfile |
@@ -210,7 +208,7 @@ Traces: correlate `intent_id` across classification → retrieval → generation
 - Adaptive cache TTL based on volatility score
 - Structured function calling for itinerary JSON validation
 - Distillation of large model outputs into cheaper re-ranker
-- Preference embedding refresh job (daily) feeding semantic rerank layer
+Preference embedding refresh job (daily) feeding semantic rerank layer
 
 ---
 
