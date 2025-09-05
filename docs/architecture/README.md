@@ -1,6 +1,6 @@
 # BloomTrip RAG + Caching + Storage Architecture (Legacy Extended View)
 
-![RAG + Caching Flow](rag_caching_storage_map.png)
+![RAG + Caching Flow](rag_flow.png)
 
 This document explains the Retrieval‑Augmented Generation (RAG) subsystem for BloomTrip, including caching, external API enrichment, and Azure storage mapping.
 It is the reference for both **system flow** and **data contracts**.

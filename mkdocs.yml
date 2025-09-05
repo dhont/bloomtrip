@@ -59,22 +59,22 @@ nav:
   - Home: index.md
   - Getting Started: getting_started.md
   - Architecture:
-      - Overview: architecture/README.md
-  - Azure Architecture: architecture/azure_overview.md
-      - RAG Flow Diagram: architecture/rag_caching_storage_map.png
+    - Overview: architecture/README.md
+    - Azure Architecture: architecture/azure_overview.md
+    - RAG Flow Diagram: architecture/rag_flow.md
   - Specs:
-      - Petal Schema: specs/petal_schema.md
-      - Trip Schema: specs/trip_schema.md
-      - User Profile Schema: specs/user_profile_schema.md
-      - API Endpoints: specs/api_endpoints.md
+    - Petal Schema: specs/petal_schema.md
+    - Trip Schema: specs/trip_schema.md
+    - User Profile Schema: specs/user_profile_schema.md
+    - API Endpoints: specs/api_endpoints.md
   - Caching & RAG: rag_pipeline.md
   - Compliance: compliance.md
   - Operations:
-      - Monitoring & Logging: operations/monitoring.md
-      - Deployment: operations/deployment.md
+    - Monitoring & Logging: operations/monitoring.md
+    - Deployment: operations/deployment.md
   - Roadmap: roadmap.md
   - Mockups: 
-      - Overview: mockups/README.md
+    - Overview: mockups/README.md
   - Bucharest E-Bike Weekend: mockups/weekend-bucharest-ebike.md
   - Search Refinement Mockup: mockups/search-refinement.md
   - Itinerary Map Page: mockups/itinerary-map-page.md
