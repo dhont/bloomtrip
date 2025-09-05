@@ -1,4 +1,6 @@
-# RAG Flow Diagram
+# RAG Flow Diagram (Legacy – Deprecated)
+
+> Deprecated: See `../architecture_new/data_flow_rag.md` for canonical RAG flow.
 
 Visual diagram for the current RAG + caching interactions.
 

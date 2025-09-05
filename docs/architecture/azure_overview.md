@@ -1,4 +1,6 @@
-# High-Level Azure Architecture
+# High-Level Azure Architecture (Legacy – Deprecated)
+
+> Deprecated: Deployment & service mapping now maintained in `architecture_new/deployment_topology.md`. This file will be pruned after migration grace period.
 
 This document expands the platform view into Azure-specific layers, cost posture, and rationale for service selection.
 
@@ -66,6 +68,7 @@ We group components into four layers to simplify reasoning about responsibilitie
 > Costs are directional; apply Azure pricing calculator with region & projected transaction volumes before committing.
 
 ### Cost Optimization Notes
+
 - Keep Functions on consumption until sustained >70% of a basic plan.
 - Defer Databricks spin-up until Spark or Delta features are justified.
 - Consolidate model hosting (batch small models into one container) early on.

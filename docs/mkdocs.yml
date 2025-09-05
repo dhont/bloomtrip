@@ -64,6 +64,9 @@ nav:
     - Domain Model: product/domain_model.md
   - Architecture:
     - Overview: architecture_new/overview.md
+  - System Context: architecture_new/context_diagram.md
+  - Components: architecture_new/component_breakdown.md
+  - Deployment Topology: architecture_new/deployment_topology.md
     - Caching Strategy: architecture_new/caching_strategy.md
     - Security & Compliance: architecture_new/security_compliance.md
   - RAG Data Flow: architecture_new/data_flow_rag.md

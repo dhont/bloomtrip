@@ -1,4 +1,6 @@
-# BloomTrip RAG + Caching + Storage Architecture (Legacy Extended View)
+# BloomTrip RAG + Caching + Storage Architecture (Legacy – Deprecated)
+
+> Deprecated: Content now split into canonical pages under `architecture_new/` (see `../architecture_new/overview.md`). This legacy aggregate will be removed after redirects are established.
 
 ![RAG + Caching Flow](rag_flow.png)
 
