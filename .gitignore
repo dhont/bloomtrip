@@ -52,3 +52,9 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# Local build artifacts (MkDocs output)
+site/
+
+# Python virtual environment
+.venv/
